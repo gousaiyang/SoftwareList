@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="renderer" content="webkit">
+
+        <title>Software List - {{PageName}}</title>
+
+        <link href="{{Bootstrap_CSS_CDN}}" rel="stylesheet">
+        <link href="{{DataTables_Bootstrap_CSS_CDN}}" rel="stylesheet">
+        <link href="{{FontAwesome_CSS_CDN}}" rel="stylesheet">
+
+        <style>
+        .page-link {
+            color: {{PaginationActiveColor}};
+        }
+
+        .page-item.active .page-link {
+            background-color: {{PaginationActiveColor}};
+            border-color: {{PaginationActiveColor}};
+        }
+
+        .page-link:focus, .page-link:hover {
+            color: {{PaginationHoverColor}};
+            background-color: {{PaginationHoverBackgroundColor}};
+        }
+
+        .form-control:focus {
+            border-color: {{OutlineColor}};
+        }
+
+        :focus {
+            outline-color: {{OutlineColor}};
+        }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-light" style="background-color: {{NavbarColor}};">
+            <div class="container">
+                <span class="navbar-brand mb-0 h1">Software List - {{PageName}}</span>
+                Generated at: {{TimeOfGeneration}}
+            </div>
+        </nav>
+        <div class="container" style="margin-top: 15px;">
+            <table id="SoftwareTable" class="table table-sm table-responsive table-hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        {{Heading}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{Items}}
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script src="{{jQuery_JS_CDN}}"></script>
+    <script src="{{DataTables_JS_CDN}}"></script>
+    <script src="{{DataTables_Bootstrap_JS_CDN}}"></script>
+    <script>
+    $(function () {
+        var $table = $('#SoftwareTable').DataTable();
+        $(document).on('click', '.hide-button', function () {
+            $table.row($(this).parent().parent()).remove().draw();
+        });
+    });
+    </script>
+</html>
