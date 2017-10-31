@@ -6,7 +6,7 @@ import functools
 import requests
 from bs4 import BeautifulSoup
 
-from SLHelper import file_content, date_sanitizer
+from SLHelper import file_content, date_sanitizer, alert_messagebox
 from SLHTMLGeneration import placeholder, url_placeholder, disable_a, render_page, open_html_in_browser
 from SLGetLocalSoftware import get_local_software
 from SLSoftwareInfo import software_info
@@ -38,6 +38,9 @@ def query_current_version(local_software, selector):
     else:
         return '[Invalid Selector]'
 
+def needs_update(current_version, newest_version):
+    return current_version.strip() != newest_version.strip()
+
 def check_update(local_software):
     for item in json.loads(file_content('CheckUpdateList.json')):
         name = item['Name']
@@ -57,11 +60,16 @@ def check_update(local_software):
         result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
         result['ReleaseDate'] = date_sanitizer(web_query(cuu, rdd)) if rdd else placeholder
 
-        yield result
+        if nvd and needs_update(result['CurrentVersion'], result['NewestVersion']):
+            yield result
 
 def main():
-    new_file = render_page('Update', check_update(get_local_software()))
-    open_html_in_browser(new_file)
+    update_list = list(check_update(get_local_software()))
+    if update_list:
+        new_file = render_page('Update', update_list)
+        open_html_in_browser(new_file)
+    else:
+        alert_messagebox('SoftwareList Update Checker', 'All the software in the list is up to date!')
 
 if __name__ == '__main__':
     main()
