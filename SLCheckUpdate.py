@@ -60,7 +60,7 @@ def check_update(local_software):
         yield result
 
 def main():
-    new_file = render_page(check_update(get_local_software()), 'Update')
+    new_file = render_page('Update', check_update(get_local_software()))
     open_html_in_browser(new_file)
 
 if __name__ == '__main__':

@@ -13,13 +13,30 @@
         <link href="{{FontAwesome_CSS_CDN}}" rel="stylesheet">
 
         <style>
+        .download-button {
+            color: {{MainColor}};
+            background-color: transparent;
+            background-image: none;
+            border-color: {{MainColor}};
+        }
+
+        .download-button:active, .download-button:hover {
+            color: #fff;
+            background-color: {{MainColor}};
+            border-color: {{MainColor}};
+        }
+
+        .download-button:focus {
+            box-shadow: 0 0 0 3px {{MainColorShadow}};
+        }
+
         .page-link {
-            color: {{PaginationActiveColor}};
+            color: {{MainColor}};
         }
 
         .page-item.active .page-link {
-            background-color: {{PaginationActiveColor}};
-            border-color: {{PaginationActiveColor}};
+            background-color: {{MainColor}};
+            border-color: {{MainColor}};
         }
 
         .page-link:focus, .page-link:hover {

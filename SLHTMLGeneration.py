@@ -4,6 +4,7 @@ import os
 import re
 import time
 import html
+import json
 import functools
 import webbrowser
 
@@ -11,19 +12,16 @@ from urllib.request import pathname2url
 
 from SLHelper import file_content, write_file
 
-template_parameters = {
+CDN_URLs = {
     'Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
     'DataTables_Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/css/dataTables.bootstrap4.min.css',
     'FontAwesome_CSS_CDN': 'https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
     'jQuery_JS_CDN': 'https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
     'DataTables_JS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js',
-    'DataTables_Bootstrap_JS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/js/dataTables.bootstrap4.min.js',
-    'NavbarColor': '#9f9',
-    'PaginationActiveColor': '#28a745',
-    'PaginationHoverColor': '#0ab728',
-    'PaginationHoverBackgroundColor': '#e3f5e3',
-    'OutlineColor': '#67e061'
+    'DataTables_Bootstrap_JS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/js/dataTables.bootstrap4.min.js'
 }
+
+theme_chosen = 'Green'
 
 placeholder = '--'
 url_placeholder = 'javascript:void(0)'
@@ -38,7 +36,7 @@ def render_template(template, data, escape_html=True):
 
     return result
 
-def render_page(items, pagename):
+def render_page(pagename, data_items):
     if not re.match(r'^[-_0-9A-Za-z]+$', pagename):
         raise ValueError('Invalid pagename')
 
@@ -52,9 +50,12 @@ def render_page(items, pagename):
     heading_template = file_content(heading_template_filename)
     item_template = file_content(item_template_filename)
 
-    items_html = functools.reduce(lambda x,y: x+y, (render_template(item_template, s) for s in items), '')
+    items_html = functools.reduce(lambda x,y: x+y, (render_template(item_template, s) for s in data_items), '')
 
-    output_html = render_template(layout_template, template_parameters, False)
+    theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % (theme_chosen.lower()))))
+
+    output_html = render_template(layout_template, CDN_URLs, False)
+    output_html = render_template(output_html, theme_parameters, False)
     output_html = render_template(output_html, {'PageName': pagename, 'Heading': heading_template, 'Items': items_html,
         'TimeOfGeneration': time.strftime('%Y-%m-%d %H:%M:%S')}, False)
 
