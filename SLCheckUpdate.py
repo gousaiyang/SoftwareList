@@ -2,6 +2,7 @@
 
 import re
 import json
+import functools
 import requests
 from bs4 import BeautifulSoup
 
@@ -27,9 +28,15 @@ def web_query(url, selector):
         else:
             return '[Invalid Selector]'
 
-def query_current_version(local_software, name_selector):
-    result = [x for x in local_software.keys() if re.match(name_selector, x)]
-    return local_software[result[0]] if result else placeholder
+def query_current_version(local_software, selector):
+    if selector['Type'] == 'InName':
+        result = functools.reduce(lambda x,y: x+y, (re.findall(selector['Selector'], x) for x in local_software.keys()), [])
+        return result[0] if result else placeholder
+    elif selector['Type'] == 'InVersion':
+        result = [x for x in local_software.keys() if re.match(selector['Selector'], x)]
+        return local_software[result[0]] if result else placeholder
+    else:
+        return '[Invalid Selector]'
 
 def check_update(local_software):
     for item in json.loads(file_content('CheckUpdateList.json')):

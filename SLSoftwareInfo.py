@@ -6,7 +6,10 @@ software_info = {
     'Git': {
         'DownloadURL': 'https://git-scm.com/',
         'CheckUpdateURL': 'https://git-scm.com/',
-        'CurrentVersionDetection': r'Git version',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Git version'
+        },
         'NewestVersionDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'span[class="version"]'
@@ -19,7 +22,10 @@ software_info = {
     'Python 3': {
         'DownloadURL': 'https://www.python.org/downloads/',
         'CheckUpdateURL': 'https://www.python.org/',
-        'CurrentVersionDetection': r'Python 3\..*Core Interpreter',
+        'CurrentVersionDetection': {
+            'Type': 'InName',
+            'Selector': r'Python (3\S*).*Core Interpreter'
+        },
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'Latest: <a href="[^"]*">Python (3\.[\d.]+)</a>'
@@ -27,7 +33,10 @@ software_info = {
     },
     'QQ': {
         'DownloadURL': 'https://im.qq.com/',
-        'CurrentVersionDetection': r'腾讯QQ'
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'腾讯QQ'
+        }
     },
     'Wechat': {
         'DownloadURL': 'https://pc.weixin.qq.com/'

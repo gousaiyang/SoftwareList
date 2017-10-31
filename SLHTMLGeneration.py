@@ -52,7 +52,7 @@ def render_page(items, pagename):
     heading_template = file_content(heading_template_filename)
     item_template = file_content(item_template_filename)
 
-    items_html = functools.reduce(lambda x,y: x + y, (render_template(item_template, s) for s in items), '')
+    items_html = functools.reduce(lambda x,y: x+y, (render_template(item_template, s) for s in items), '')
 
     output_html = render_template(layout_template, template_parameters, False)
     output_html = render_template(output_html, {'PageName': pagename, 'Heading': heading_template, 'Items': items_html,
