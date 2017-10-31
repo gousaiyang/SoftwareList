@@ -40,23 +40,23 @@ def render_page(items, pagename):
     if not re.match(r'^[-_0-9A-Za-z]+$', pagename):
         raise ValueError('Invalid pagename')
 
-    heading_template_filename = 'template/heading_%s.html' % (pagename.lower())
-    item_template_filename = 'template/item_%s.html' % (pagename.lower())
+    heading_template_filename = os.path.join('template', 'heading_%s.html' % (pagename.lower()))
+    item_template_filename = os.path.join('template', 'item_%s.html' % (pagename.lower()))
 
     if not os.path.isfile(heading_template_filename) or not os.path.isfile(item_template_filename):
         raise NameError('No template found with name %s' % (pagename))
 
-    layout_template = file_content('template/layout.html')
+    layout_template = file_content(os.path.join('template', 'layout.html'))
     heading_template = file_content(heading_template_filename)
     item_template = file_content(item_template_filename)
 
     items_html = functools.reduce(lambda x,y: x + y, (render_template(item_template, s) for s in items), '')
 
     output_html = render_template(layout_template, template_parameters, False)
-    output_html = render_template(output_html, {'PageName': pagename, 'Heading': heading_template ,'Items': items_html,
+    output_html = render_template(output_html, {'PageName': pagename, 'Heading': heading_template, 'Items': items_html,
         'TimeOfGeneration': time.strftime('%Y-%m-%d %H:%M:%S')}, False)
 
-    new_filename = time.strftime('output/SoftwareList_' + pagename + '_%Y%m%d%H%M%S.html')
+    new_filename = os.path.join('output', time.strftime('SoftwareList_' + pagename + '_%Y%m%d%H%M%S.html'))
     write_file(new_filename, output_html)
     return new_filename
 

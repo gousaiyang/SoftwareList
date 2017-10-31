@@ -26,7 +26,7 @@ def get_all_files():
 
 def delete_old_files():
     for f in html_files - newest_files:
-        os.remove('output/' + f)
+        os.remove(os.path.join('output', f))
 
 def main():
     get_all_files()
