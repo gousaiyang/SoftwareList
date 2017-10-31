@@ -2,34 +2,34 @@
 
 # TODO: Enrich this list with more software.
 
-update_detection_list = [
-    {
-        'Name': 'Git',
+software_info = {
+    'Git': {
         'DownloadURL': 'https://git-scm.com/',
-        'CheckURL': 'https://git-scm.com/',
-        'VersionDetection': {
+        'CheckUpdateURL': 'https://git-scm.com/',
+        'CurrentVersionDetection': r'Git version',
+        'NewestVersionDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'span[class="version"]'
         },
-        'DateDetection': {
+        'ReleaseDateDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'span[class="release-date"]'
         }
     },
-    {
-        'Name': 'Python 3',
+    'Python 3': {
         'DownloadURL': 'https://www.python.org/downloads/',
-        'CheckURL': 'https://www.python.org/',
-        'VersionDetection': {
+        'CheckUpdateURL': 'https://www.python.org/',
+        'CurrentVersionDetection': r'Python 3\..*Core Interpreter',
+        'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'Latest: <a href="[^"]*">Python (3\.[\d.]+)</a>'
         },
-        'DateDetection': None
     },
-    {
-        'Name': 'QQ',
+    'QQ': {
         'DownloadURL': 'https://im.qq.com/',
-        'VersionDetection': None,
-        'DateDetection': None
+        'CurrentVersionDetection': r'腾讯QQ'
+    },
+    'Wechat': {
+        'DownloadURL': 'https://pc.weixin.qq.com/'
     }
-]
+}

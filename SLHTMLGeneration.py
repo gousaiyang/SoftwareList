@@ -26,6 +26,8 @@ template_parameters = {
 }
 
 placeholder = '--'
+url_placeholder = 'javascript:void(0)'
+disable_a = 'disabled'
 
 def render_template(template, data, escape_html=True):
     result = template

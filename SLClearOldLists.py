@@ -3,22 +3,18 @@
 import os
 import re
 
-html_files = set()
-html_file_groups = {}
-newest_files = set()
+from collections import defaultdict
 
-def add_element_to_group(k, v):
-    if k in html_file_groups:
-        html_file_groups[k].append(v)
-    else:
-        html_file_groups[k] = [v]
+html_files = set()
+html_file_groups = defaultdict(list)
+newest_files = set()
 
 def get_all_files():
     for n in os.listdir('output'):
         r = re.findall(r'SoftwareList_([-_0-9A-Za-z]+)_\d{14}\.html', n)
         if r:
             html_files.add(n)
-            add_element_to_group(r[0], n)
+            html_file_groups[r[0]].append(n)
 
     for k in html_file_groups:
         html_file_groups[k].sort()

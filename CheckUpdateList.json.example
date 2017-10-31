@@ -1,0 +1,21 @@
+[
+    {
+        "Name": "Git",
+        "Priority": 4
+    },
+    {
+        "Name": "Wechat",
+        "Priority": 3
+    },
+    {
+        "Name": "nonexistent",
+        "Priority": 5
+    },
+    {
+        "Name": "Python"
+    },
+    {
+        "Name": "QQ",
+        "Priority": "<script>alert('xss')</script>"
+    }
+]
