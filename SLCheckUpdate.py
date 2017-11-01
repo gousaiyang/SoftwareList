@@ -45,6 +45,9 @@ def needs_update(current_version, newest_version):
 
 def check_update(local_software):
     for item in json.loads(file_content('CheckUpdateList.json')):
+        if item.get('Ignored'):
+            continue
+
         name = item['Name']
         print('Checking software: %s' % name)
 

@@ -17,5 +17,9 @@
     {
         "Name": "QQ",
         "Priority": "<script>alert('xss')</script>"
+    },
+    {
+        "Name": "IgnoredSoftware",
+        "Ignored": true
     }
 ]
