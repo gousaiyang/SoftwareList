@@ -39,7 +39,9 @@ def query_current_version(local_software, selector):
         return '[Invalid Selector]'
 
 def needs_update(current_version, newest_version):
-    return current_version.strip() != newest_version.strip()
+    cv = current_version.strip()
+    nv = newest_version.strip()
+    return cv != nv or cv == placeholder
 
 def check_update(local_software):
     for item in json.loads(file_content('CheckUpdateList.json')):
@@ -60,7 +62,7 @@ def check_update(local_software):
         result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
         result['ReleaseDate'] = date_sanitizer(web_query(cuu, rdd)) if rdd else placeholder
 
-        if nvd and needs_update(result['CurrentVersion'], result['NewestVersion']):
+        if needs_update(result['CurrentVersion'], result['NewestVersion']):
             yield result
 
 def main():
