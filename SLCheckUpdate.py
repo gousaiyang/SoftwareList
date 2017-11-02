@@ -76,6 +76,8 @@ def check_update(local_software):
             yield result
 
 def main():
+    print('SoftwareList Update Check')
+    print('Querying local software information...')
     update_list = list(check_update(get_local_software()))
     if update_list:
         new_file = render_page('Update', update_list)

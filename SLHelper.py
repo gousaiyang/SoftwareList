@@ -22,3 +22,6 @@ def alert_messagebox(title, content):
     root.withdraw()
     messagebox.showinfo(title, content)
     root.destroy()
+
+def keep_window_open():
+    input('Press Enter to exit...')
