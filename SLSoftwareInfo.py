@@ -125,7 +125,7 @@ software_info = {
         'CheckUpdateURL': 'http://www.magicexif.com/update/update_info.xml',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
-            'Selector': r'MagicEXIF Metadata Editor'
+            'Selector': r'MagicEXIF (?:Metadata Editor|元数据编辑器)'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
