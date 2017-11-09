@@ -2,7 +2,7 @@
 
 import re
 import json
-import functools
+import itertools
 import requests
 from bs4 import BeautifulSoup
 
@@ -37,7 +37,7 @@ def web_query(url, selector):
 
 def query_current_version(local_software, selector):
     if selector['Type'] == 'InName':
-        result = functools.reduce(lambda x,y: x+y, (re.findall(selector['Selector'], x) for x in local_software.keys()), [])
+        result = list(itertools.chain(*(re.findall(selector['Selector'], x) for x in local_software.keys())))
         return result[0] if result else placeholder
     elif selector['Type'] == 'InVersion':
         result = [x for x in local_software.keys() if re.match(selector['Selector'], x)]

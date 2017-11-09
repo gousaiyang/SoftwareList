@@ -5,7 +5,6 @@ import re
 import time
 import html
 import json
-import functools
 import webbrowser
 
 from urllib.request import pathname2url
@@ -50,7 +49,7 @@ def render_page(pagename, data_items):
     heading_template = file_content(heading_template_filename)
     item_template = file_content(item_template_filename)
 
-    items_html = functools.reduce(lambda x,y: x+y, (render_template(item_template, s) for s in data_items), '')
+    items_html = ''.join(render_template(item_template, s) for s in data_items)
 
     theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % (theme_chosen.lower()))))
 
