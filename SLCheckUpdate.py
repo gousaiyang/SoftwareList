@@ -13,7 +13,7 @@ from SLSoftwareInfo import software_info
 
 def web_query(url, selector):
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=60)
     except Exception as e:
         print('Error: %s' % (e))
         return '[Network Failure]'
