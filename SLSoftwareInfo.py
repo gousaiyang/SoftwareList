@@ -62,7 +62,20 @@ software_info = {
         }
     },
     'Fiddler': {
-        'DownloadURL': 'https://www.telerik.com/download/fiddler'
+        'DownloadURL': 'https://www.telerik.com/download/fiddler',
+        'CheckUpdateURL': 'https://chocolatey.org/packages/fiddler4',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Telerik Fiddler'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Downloads of v ([\d.]+)'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'>(\d{1,2}/\d{1,2}/\d{4})<'
+        }
     },
     'foobar2000': {
         'DownloadURL': 'https://www.foobar2000.org/download',

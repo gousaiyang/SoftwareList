@@ -40,7 +40,7 @@ def query_current_version(local_software, selector):
         result = list(itertools.chain(*(re.findall(selector['Selector'], x) for x in local_software.keys())))
         return result[0] if result else placeholder
     elif selector['Type'] == 'InVersion':
-        result = [x for x in local_software.keys() if re.match(selector['Selector'], x)]
+        result = [x for x in local_software.keys() if re.search(selector['Selector'], x)] # Should not use re.match()!
         return local_software[result[0]] if result else placeholder
     else:
         return '[Invalid Selector]'
