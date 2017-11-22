@@ -63,18 +63,18 @@ software_info = {
     },
     'Fiddler': {
         'DownloadURL': 'https://www.telerik.com/download/fiddler',
-        'CheckUpdateURL': 'https://chocolatey.org/packages/fiddler4',
+        'CheckUpdateURL': 'http://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/Microsoft-Fiddler.shtml',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Telerik Fiddler'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Downloads of v ([\d.]+)'
+            'Selector': r'spjs_prog_version="([\d.]+)"'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'>(\d{1,2}/\d{1,2}/\d{4})<'
+            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{2}-\d{2})'
         }
     },
     'foobar2000': {
