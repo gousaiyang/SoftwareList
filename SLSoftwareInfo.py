@@ -222,7 +222,7 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'BeautifulSoupWithRegex',
             'bs': 'p[class="DownloadVersion"]',
-            're': r'v([\d.]+)'
+            're': r'v?([\d.]+)'
         }
     },
     'WinRAR': {
