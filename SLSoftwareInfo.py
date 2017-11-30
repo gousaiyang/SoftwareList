@@ -74,7 +74,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{2}-\d{2})'
+            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'foobar2000': {
@@ -146,7 +146,20 @@ software_info = {
         }
     },
     'MarkdownPad': {
-        'DownloadURL': 'http://markdownpad.com/'
+        'DownloadURL': 'http://markdownpad.com/',
+        'CheckUpdateURL': 'http://www.softpedia.com/get/Programming/File-Editors/MarkdownPad.shtml',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'MarkdownPad'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'spjs_prog_version="([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{1,2}-\d{1,2})'
+        }
     },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/zh-cn/',
@@ -188,16 +201,28 @@ software_info = {
             'Selector': r'"createdAt":"(\d{4}-\d{2}-\d{2})'
         }
     },
+    'Python 2': {
+        'DownloadURL': 'https://www.python.org/downloads/',
+        'CheckUpdateURL': 'https://www.python.org/downloads/',
+        'CurrentVersionDetection': {
+            'Type': 'InName',
+            'Selector': r'^Python (2\.[\d.]+)$'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Python (2\.[\d.]+)'
+        }
+    },
     'Python 3': {
         'DownloadURL': 'https://www.python.org/downloads/',
-        'CheckUpdateURL': 'https://www.python.org/',
+        'CheckUpdateURL': 'https://www.python.org/downloads/',
         'CurrentVersionDetection': {
             'Type': 'InName',
             'Selector': r'Python (3\S*).*Core Interpreter'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Latest: <a href="[^"]*">Python (3\.[\d.]+)</a>'
+            'Selector': r'Python (3\.[\d.]+)'
         }
     },
     'Sublime Text': {
@@ -262,7 +287,20 @@ software_info = {
         }
     },
     '微信': {
-        'DownloadURL': 'https://pc.weixin.qq.com/'
+        'DownloadURL': 'https://pc.weixin.qq.com/',
+        'CheckUpdateURL': 'https://pc.qq.com/detail/8/detail_11488.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'微信'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'(\d+\.[\d.]+)</li>'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})</li>'
+        }
     },
     '搜狗拼音输入法': {
         'DownloadURL': 'http://pinyin.sogou.com/',
@@ -333,6 +371,19 @@ software_info = {
         }
     },
     '腾讯QQ': {
-        'DownloadURL': 'https://im.qq.com/pcqq/'
+        'DownloadURL': 'https://im.qq.com/pcqq/',
+        'CheckUpdateURL': 'http://rj.baidu.com/soft/detail/12350.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'腾讯QQ'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'"version":"([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"update_time":"(\d{4}-\d{1,2}-\d{1,2})'
+        }
     }
 }
