@@ -90,19 +90,19 @@ software_info = {
         }
     },
     'Git': {
-        'DownloadURL': 'https://git-scm.com/',
-        'CheckUpdateURL': 'https://git-scm.com/',
+        'DownloadURL': 'https://git-scm.com/download/win',
+        'CheckUpdateURL': 'https://chocolatey.org/packages/git',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Git version'
         },
         'NewestVersionDetection': {
-            'Type': 'BeautifulSoup',
-            'Selector': 'span[class="version"]'
+            'Type': 'Regex',
+            'Selector': r'Downloads of v ([\d.]+)'
         },
         'ReleaseDateDetection': {
-            'Type': 'BeautifulSoup',
-            'Selector': 'span[class="release-date"]'
+            'Type': 'Regex',
+            'Selector': r'<p class="stat-number">(\d{1,2}/\d{1,2}/\d{4})</p>'
         }
     },
     'Google Chrome': {
