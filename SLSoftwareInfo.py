@@ -1,6 +1,22 @@
 # -*- coding: utf-8 -*-
 
 software_info = {
+    '7-Zip': {
+        'DownloadURL': 'http://www.7-zip.org/',
+        'CheckUpdateURL': 'http://www.7-zip.org/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'7-Zip'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Download 7-Zip ([\d.]+) \((?:\d{4}-\d{1,2}-\d{1,2})\) for Windows'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'Download 7-Zip (?:[\d.]+) \((\d{4}-\d{1,2}-\d{1,2})\) for Windows'
+        }
+    },
     'Atom': {
         'DownloadURL': 'https://atom.io/',
         'CheckUpdateURL': 'https://github.com/atom/atom/releases.atom',
@@ -43,6 +59,18 @@ software_info = {
         'ReleaseDateDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'time[class="dateUpdated"]'
+        }
+    },
+    'Everything': {
+        'DownloadURL': 'https://www.voidtools.com/downloads/',
+        'CheckUpdateURL': 'https://www.voidtools.com/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Everything'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Download Everything ([\d.]+)'
         }
     },
     'FastStone Capture': {
@@ -115,6 +143,22 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'win64,stable,([\d.]+)'
+        }
+    },
+    'HxD Hex Editor': {
+        'DownloadURL': 'https://mh-nexus.de/en/downloads.php?product=HxD',
+        'CheckUpdateURL': 'https://mh-nexus.de/en/hxd/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'HxD Hex Editor'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'<span style="float: left;">([\d.]+)[^<>]*</span>'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'<span style="float: left;">(?:[\d.]+) \(([^)]*)\)</span>'
         }
     },
     'Java 8': {
@@ -199,6 +243,22 @@ software_info = {
         'ReleaseDateDetection': {
             'Type': 'Regex',
             'Selector': r'"createdAt":"(\d{4}-\d{2}-\d{2})'
+        }
+    },
+    'PotPlayer': {
+        'DownloadURL': 'https://potplayer.daum.net/',
+        'CheckUpdateURL': 'https://potplayer.daum.net/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'PotPlayer'
+        },
+        'NewestVersionDetection': {
+            'Type': 'BeautifulSoup',
+            'Selector': 'strong[class="tit_version"]'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'BeautifulSoup',
+            'Selector': 'span[class="txt_date"]'
         }
     },
     'Python 2': {
