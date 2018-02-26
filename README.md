@@ -32,6 +32,15 @@ The HTML-based lists support several themes which you can configure in `Config.j
 - Run `SLDeleteDailyUpdateTask.py` to delete the update task.
 - Run `SLClearOldLists.py` to clear old software list of the 3 kind, leaving only the newest ones respectively.
 
+## Screenshots
+![Full](./img/screenshot_full.png)
+
+![Main 1](./img/screenshot_main_1.png)
+
+![Main 2](./img/screenshot_main_2.png)
+
+![Update](./img/screenshot_update.png)
+
 ## Environment and Dependencies
 ### Environment
 - OS: Windows 7 and higher versions
