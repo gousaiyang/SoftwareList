@@ -44,8 +44,13 @@
             background-color: {{PaginationHoverBackgroundColor}};
         }
 
+        .page-link:focus {
+            box-shadow: 0 0 0 0.2rem {{MainColorShadow}};
+        }
+
         .form-control:focus {
             border-color: {{OutlineColor}};
+            box-shadow: 0 0 0 0.2rem {{InputColorShadow}};
         }
 
         :focus {
@@ -61,7 +66,7 @@
             </div>
         </nav>
         <div class="container" style="margin-top: 15px;">
-            <table id="SoftwareTable" class="table table-sm table-responsive table-hover" cellspacing="0" width="100%">
+            <table id="SoftwareTable" class="table table-sm table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         {{Heading}}

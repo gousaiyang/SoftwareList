@@ -12,10 +12,10 @@ from urllib.request import pathname2url
 from SLHelper import file_content, write_file
 
 CDN_URLs = {
-    'Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
+    'Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css',
     'DataTables_Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/css/dataTables.bootstrap4.min.css',
     'FontAwesome_CSS_CDN': 'https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
-    'jQuery_JS_CDN': 'https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
+    'jQuery_JS_CDN': 'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js',
     'DataTables_JS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js',
     'DataTables_Bootstrap_JS_CDN': 'https://cdn.bootcss.com/datatables/1.10.16/js/dataTables.bootstrap4.min.js'
 }

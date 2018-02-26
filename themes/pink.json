@@ -3,6 +3,7 @@
     "MainColorShadow": "rgba(232,62,140,.5)",
     "NavbarColor": "#f6f",
     "OutlineColor": "#e673ce",
+    "InputColorShadow": "rgba(232,62,140,.25)",
     "PaginationHoverColor": "#d820c8",
     "PaginationHoverBackgroundColor": "#ffdcfe"
 }
