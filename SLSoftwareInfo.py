@@ -46,8 +46,8 @@ software_info = {
         }
     },
     'Dev-C++': {
-        'DownloadURL': 'https://sourceforge.net/projects/orwelldevcpp/',
-        'CheckUpdateURL': 'https://sourceforge.net/projects/orwelldevcpp/',
+        'DownloadURL': 'https://sourceforge.net/projects/orwelldevcpp/files/',
+        'CheckUpdateURL': 'https://sourceforge.net/projects/orwelldevcpp/files/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Dev-C\+\+'
@@ -207,14 +207,14 @@ software_info = {
     },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/zh-cn/',
-        'CheckUpdateURL': 'https://nodejs.org/zh-cn/download/',
+        'CheckUpdateURL': 'https://nodejs.org/zh-cn/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
         },
         'NewestVersionDetection': {
-            'Type': 'BeautifulSoup',
-            'Selector': 'strong'
+            'Type': 'Regex',
+            'Selector': r'([\d.]+) LTS'
         }
     },
     'Oracle VM VirtualBox': {
