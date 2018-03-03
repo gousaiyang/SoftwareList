@@ -1,3 +1,5 @@
 {
-    "theme": "Random"
+    "theme": "Random",
+    "adb_exec": "adb",
+    "aapt_exec": "/data/local/tmp/aapt"
 }

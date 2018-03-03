@@ -10,7 +10,7 @@ import webbrowser
 from urllib.request import pathname2url
 
 from SLHelper import file_content, write_file
-from SLConfigReader import get_theme
+from SLConfigReader import get_theme_config
 
 CDN_URLs = {
     'Bootstrap_CSS_CDN': 'https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css',
@@ -50,7 +50,7 @@ def render_page(pagename, data_items):
 
     items_html = ''.join(render_template(item_template, s) for s in data_items)
 
-    theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % (get_theme()))))
+    theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % (get_theme_config()))))
 
     output_html = render_template(layout_template, CDN_URLs, False)
     output_html = render_template(output_html, theme_parameters, False)
