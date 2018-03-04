@@ -46,8 +46,8 @@ software_info = {
         }
     },
     'Dev-C++': {
-        'DownloadURL': 'https://sourceforge.net/projects/orwelldevcpp/files/',
-        'CheckUpdateURL': 'https://sourceforge.net/projects/orwelldevcpp/files/',
+        'DownloadURL': 'https://sourceforge.net/projects/orwelldevcpp/',
+        'CheckUpdateURL': 'https://sourceforge.net/projects/orwelldevcpp/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Dev-C\+\+'
