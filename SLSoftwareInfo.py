@@ -226,7 +226,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'VirtualBox ([\d.]+) platform packages'
+            'Selector': r'download\.virtualbox\.org/virtualbox/([\d.]+)/'
         }
     },
     'Postman': {
