@@ -102,7 +102,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span[^<>]*itemprop="dateModified"[^<>]*content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'foobar2000': {
@@ -202,7 +202,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span itemprop="dateModified" class="fl" content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span[^<>]*itemprop="dateModified"[^<>]*content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Node.js': {
