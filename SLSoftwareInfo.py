@@ -310,6 +310,22 @@ software_info = {
             're': r'v?([\d.]+)'
         }
     },
+    'TIM': {
+        'DownloadURL': 'https://office.qq.com/download.html',
+        'CheckUpdateURL': 'https://pc.qq.com/detail/18/detail_23258.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'TIM'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'(\d+\.[\d.]+)</li>'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})</li>'
+        }
+    },
     'WinRAR': {
         'DownloadURL': 'https://www.win-rar.com/download.html?&L=0',
         'CheckUpdateURL': 'https://www.win-rar.com/download.html?&L=0',
