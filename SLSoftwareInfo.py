@@ -439,7 +439,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'"installVersion":"([\d.]+)"'
+            'Selector': r'"installVersion":"V?([\d.]+)"'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
