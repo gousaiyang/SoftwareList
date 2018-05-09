@@ -263,26 +263,26 @@ software_info = {
     },
     'Python 2': {
         'DownloadURL': 'https://www.python.org/downloads/',
-        'CheckUpdateURL': 'https://www.python.org/downloads/',
+        'CheckUpdateURL': 'https://www.python.org/downloads/source/',
         'CurrentVersionDetection': {
             'Type': 'InName',
             'Selector': r'^Python (2\.[\d.]+)$'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Python (2\.[\d.]+)'
+            'Selector': r'Latest Python 2 Release - Python ([\d.]+)'
         }
     },
     'Python 3': {
         'DownloadURL': 'https://www.python.org/downloads/',
-        'CheckUpdateURL': 'https://www.python.org/downloads/',
+        'CheckUpdateURL': 'https://www.python.org/downloads/source/',
         'CurrentVersionDetection': {
             'Type': 'InName',
             'Selector': r'Python (3\S*).*Core Interpreter'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Python (3\.[\d.]+)'
+            'Selector': r'Latest Python 3 Release - Python ([\d.]+)'
         }
     },
     'Sublime Text': {
