@@ -427,7 +427,7 @@ software_info = {
         'CheckUpdateURL': 'http://pinyin.sogou.com/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
-            'Selector': r'搜狗拼音输入法'
+            'Selector': r'搜狗(?:拼音)?输入法\b'
         },
         'NewestVersionDetection': {
             'Type': 'BeautifulSoup',
