@@ -154,11 +154,11 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<span style="float: left;">([\d.]+)[^<>]*</span>'
+            'Selector': r'<span style="float: left;">([\d.]+) \(.*?\)</span>'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span style="float: left;">[\d.]+ \(([^)]*)\)</span>'
+            'Selector': r'<span style="float: left;">[\d.]+ \((.*?)\)</span>'
         }
     },
     'Java 8': {
