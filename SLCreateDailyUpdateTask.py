@@ -23,7 +23,7 @@ def get_updater():
 def main():
     start_time = input_task_time()
     updater = get_updater()
-    subprocess.call(['schtasks', '/Create', '/SC', 'DAILY', '/TN', task_name, '/TR', updater, '/ST', start_time, '/F'])
+    subprocess.call(('schtasks', '/Create', '/SC', 'DAILY', '/TN', task_name, '/TR', updater, '/ST', start_time, '/F'))
     keep_window_open()
 
 if __name__ == '__main__':

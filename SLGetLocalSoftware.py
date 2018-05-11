@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
 
 import re
+import locale
 import itertools
 from subprocess import Popen, PIPE, STDOUT
 
 def exec_powershell(command):
-    p = Popen(['powershell', command], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+    p = Popen(('powershell', command), stdout=PIPE, stdin=PIPE, stderr=STDOUT)
     return p.communicate()[0]
 
 def parse_ps_output(content):
-    for s in content.decode('gbk').strip().split('\r\n\r\n'):
-        r = re.findall(r'DisplayName(?:\s*):(?:\s*)(.*)\r\nDisplayVersion(?:\s*):(?:\s*)(.*)', s)
+    for s in content.decode(locale.getpreferredencoding()).strip().split('\r\n\r\n'):
+        r = re.findall(r'DisplayName\s*:\s*(.*)\r\nDisplayVersion\s*:\s*(.*)', s)
         if r:
             yield (r[0][0].strip(), r[0][1].strip())
         else:
-            r = re.findall(r'DisplayName(?:\s*):(?:\s*)(.*)', s)
+            r = re.findall(r'DisplayName\s*:\s*(.*)', s)
             if r:
                 yield (r[0].strip(), '')
 

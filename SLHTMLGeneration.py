@@ -30,7 +30,7 @@ def render_template(template, data, escape_html=True):
 
     for key, value in data.items():
         v = str(value)
-        result = result.replace('{{%s}}' % (key), html.escape(v) if escape_html else v)
+        result = result.replace('{{%s}}' % key, html.escape(v) if escape_html else v)
 
     return result
 
@@ -38,11 +38,11 @@ def render_page(pagename, data_items):
     if not re.match(r'^[-_0-9A-Za-z]+$', pagename):
         raise ValueError('Invalid pagename')
 
-    heading_template_filename = os.path.join('template', 'heading_%s.html' % (pagename.lower()))
-    item_template_filename = os.path.join('template', 'item_%s.html' % (pagename.lower()))
+    heading_template_filename = os.path.join('template', 'heading_%s.html' % pagename.lower())
+    item_template_filename = os.path.join('template', 'item_%s.html' % pagename.lower())
 
     if not os.path.isfile(heading_template_filename) or not os.path.isfile(item_template_filename):
-        raise NameError('No template found with name %s' % (pagename))
+        raise NameError('No template found with name %s' % pagename)
 
     layout_template = file_content(os.path.join('template', 'layout.html'))
     heading_template = file_content(heading_template_filename)
@@ -50,7 +50,7 @@ def render_page(pagename, data_items):
 
     items_html = ''.join(render_template(item_template, s) for s in data_items)
 
-    theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % (get_theme_config()))))
+    theme_parameters = json.loads(file_content(os.path.join('themes', '%s.json' % get_theme_config())))
 
     output_html = render_template(layout_template, CDN_URLs, False)
     output_html = render_template(output_html, theme_parameters, False)

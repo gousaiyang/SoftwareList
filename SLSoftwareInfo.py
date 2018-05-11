@@ -10,11 +10,11 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Download 7-Zip ([\d.]+) \((?:\d{4}-\d{1,2}-\d{1,2})\) for Windows'
+            'Selector': r'Download 7-Zip ([\d.]+) \(\d{4}-\d{1,2}-\d{1,2}\) for Windows'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'Download 7-Zip (?:[\d.]+) \((\d{4}-\d{1,2}-\d{1,2})\) for Windows'
+            'Selector': r'Download 7-Zip [\d.]+ \((\d{4}-\d{1,2}-\d{1,2})\) for Windows'
         }
     },
     'Atom': {
@@ -158,7 +158,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span style="float: left;">(?:[\d.]+) \(([^)]*)\)</span>'
+            'Selector': r'<span style="float: left;">[\d.]+ \(([^)]*)\)</span>'
         }
     },
     'Java 8': {
@@ -435,7 +435,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'更新日期(?:\s*):(?:\s*)([\d-]+)'
+            'Selector': r'更新日期\s*:\s*([\d-]+)'
         }
     },
     '暴风影音': {
