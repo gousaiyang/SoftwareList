@@ -205,6 +205,34 @@ software_info = {
             'Selector': r'<span[^<>]*itemprop="dateModified"[^<>]*content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
+    'MiKTeX': {
+        'DownloadURL': 'https://miktex.org/download',
+        'CheckUpdateURL': 'https://miktex.org/download',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'MiKTeX'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'miktex-(\d+\.\d+)'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'Date:</td>\s*<td>(.*?)</td>'
+        }
+    },
+    'Nmap': {
+        'DownloadURL': 'https://nmap.org/download.html',
+        'CheckUpdateURL': 'https://nmap.org/download.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'[Nn]map'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'nmap-([\d.]+)-setup\.exe'
+        }
+    },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/zh-cn/',
         'CheckUpdateURL': 'https://nodejs.org/zh-cn/',
@@ -227,6 +255,22 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'download\.virtualbox\.org/virtualbox/([\d.]+)/'
+        }
+    },
+    'Pandoc': {
+        'DownloadURL': 'https://github.com/jgm/pandoc/releases/latest',
+        'CheckUpdateURL': 'https://pandoc.org/releases.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Pandoc'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'>pandoc ([\d.]+) \(.*?\)</a>'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'>pandoc [\d.]+ \((.*?)\)</a>'
         }
     },
     'Postman': {
