@@ -4,6 +4,7 @@ import re
 import json
 import itertools
 import requests
+import colorlabels as cl
 from bs4 import BeautifulSoup
 
 from SLHelper import file_content, date_sanitizer, alert_messagebox
@@ -11,11 +12,16 @@ from SLHTMLGeneration import placeholder, url_placeholder, disable_a, render_pag
 from SLGetLocalSoftware import get_local_software
 from SLSoftwareInfo import software_info
 
+_web_query_error = None
+
 def web_query(url, selector):
+    global _web_query_error
+
     try:
+        _web_query_error = None
         r = requests.get(url, timeout=60)
     except Exception as e:
-        print('Error: %s' % e)
+        _web_query_error = e
         return '[Network Failure]'
     else:
         if selector['Type'] == 'Regex':
@@ -51,34 +57,49 @@ def needs_update(current_version, newest_version):
     return cv != nv or cv == placeholder
 
 def check_update(local_software):
+    global _web_query_error
+
     for item in json.loads(file_content('CheckUpdateList.json')):
         if item.get('Ignored'):
             continue
 
         name = item['Name']
-        print('Checking software: %s' % name)
 
-        result = {'Name': name, 'Priority': item.get('Priority', '')}
+        with cl.progress('Checking software: %s' % name, cl.PROGRESS_SPIN, color=cl.COLOR_NONE, mark='*') as p:
+            result = {'Name': name, 'Priority': item.get('Priority', '')}
 
-        info = software_info.get(name, {})
-        cuu = info.get('CheckUpdateURL')
-        cvd = info.get('CurrentVersionDetection')
-        nvd = info.get('NewestVersionDetection')
-        rdd = info.get('ReleaseDateDetection')
+            info = software_info.get(name, {})
+            cuu = info.get('CheckUpdateURL')
+            cvd = info.get('CurrentVersionDetection')
+            nvd = info.get('NewestVersionDetection')
+            rdd = info.get('ReleaseDateDetection')
 
-        result['DownloadURL'] = info.get('DownloadURL', url_placeholder)
-        result['DownloadAttribute'] = '' if 'DownloadURL' in info else disable_a
-        result['CurrentVersion'] = query_current_version(local_software, cvd) if cvd else placeholder
-        result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
-        result['ReleaseDate'] = date_sanitizer(web_query(cuu, rdd)) if rdd else placeholder
+            result['DownloadURL'] = info.get('DownloadURL', url_placeholder)
+            result['DownloadAttribute'] = '' if 'DownloadURL' in info else disable_a
+            result['CurrentVersion'] = query_current_version(local_software, cvd) if cvd else placeholder
 
-        if needs_update(result['CurrentVersion'], result['NewestVersion']):
-            yield result
+            result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
+            if _web_query_error:
+                p.stop()
+                cl.error('Error: %s' % _web_query_error)
+                _web_query_error = None
+
+            result['ReleaseDate'] = date_sanitizer(web_query(cuu, rdd)) if rdd else placeholder
+            if _web_query_error:
+                p.stop()
+                cl.error('Error: %s' % _web_query_error)
+                _web_query_error = None
+
+            if needs_update(result['CurrentVersion'], result['NewestVersion']):
+                yield result
 
 def main():
-    print('SoftwareList Update Check')
-    print('Querying local software information...')
-    update_list = list(check_update(get_local_software()))
+    cl.section('SoftwareList Update Check')
+
+    with cl.progress('Querying local software information...', cl.PROGRESS_SPIN):
+        local_software = get_local_software()
+
+    update_list = list(check_update(local_software))
     if update_list:
         new_file = render_page('Update', update_list)
         open_html_in_browser(new_file)
