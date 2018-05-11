@@ -259,18 +259,18 @@ software_info = {
     },
     'Pandoc': {
         'DownloadURL': 'https://github.com/jgm/pandoc/releases/latest',
-        'CheckUpdateURL': 'https://pandoc.org/releases.html',
+        'CheckUpdateURL': 'https://api.github.com/repos/jgm/pandoc/releases/latest',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Pandoc'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'>pandoc ([\d.]+) \(.*?\)</a>'
+            'Selector': r'"tag_name"\s*:\s*"([\d.]+)"'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'>pandoc [\d.]+ \((.*?)\)</a>'
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Postman': {
