@@ -9,7 +9,7 @@ from SLHelper import file_content
 
 default_theme = 'Random'
 all_themes = [f[:-5] for f in os.listdir('themes')
-    if os.path.isfile(os.path.join('themes', f)) and re.match(r'^[-_0-9A-Za-z]+\.json$', f)]
+    if os.path.isfile(os.path.join('themes', f)) and re.fullmatch(r'[-_0-9A-Za-z]+\.json', f)]
 
 def get_theme_config():
     try:

@@ -35,7 +35,7 @@ def render_template(template, data, escape_html=True):
     return result
 
 def render_page(pagename, data_items):
-    if not re.match(r'^[-_0-9A-Za-z]+$', pagename):
+    if not re.fullmatch(r'[-_0-9A-Za-z]+', pagename):
         raise ValueError('Invalid pagename')
 
     heading_template_filename = os.path.join('template', 'heading_%s.html' % pagename.lower())
