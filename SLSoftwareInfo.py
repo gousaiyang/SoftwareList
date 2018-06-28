@@ -102,7 +102,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span[^<>]*itemprop="dateModified"[^<>]*content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span[^<>]*?itemprop="dateModified"[^<>]*?content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'foobar2000': {
@@ -202,7 +202,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span[^<>]*itemprop="dateModified"[^<>]*content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span[^<>]*?itemprop="dateModified"[^<>]*?content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'MiKTeX': {
@@ -322,7 +322,7 @@ software_info = {
         'CheckUpdateURL': 'https://www.python.org/downloads/source/',
         'CurrentVersionDetection': {
             'Type': 'InName',
-            'Selector': r'Python (3\S*).*Core Interpreter'
+            'Selector': r'Python (3\S*) Core Interpreter'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
