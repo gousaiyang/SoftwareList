@@ -146,7 +146,7 @@ software_info = {
         }
     },
     'HxD Hex Editor': {
-        'DownloadURL': 'https://mh-nexus.de/en/downloads.php?product=HxD',
+        'DownloadURL': 'https://mh-nexus.de/en/downloads.php?product=HxD20',
         'CheckUpdateURL': 'https://mh-nexus.de/en/hxd/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
