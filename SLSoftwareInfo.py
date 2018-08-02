@@ -242,7 +242,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'([\d.]+) LTS'
+            'Selector': r'data-version="v([\d.]+)"'
         }
     },
     'Oracle VM VirtualBox': {
