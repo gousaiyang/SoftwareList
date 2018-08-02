@@ -370,6 +370,18 @@ software_info = {
             'Selector': r'(\d{4}-\d{1,2}-\d{1,2})</li>'
         }
     },
+    'Visual Studio Code': {
+        'DownloadURL': 'https://code.visualstudio.com/',
+        'CheckUpdateURL': 'https://code.visualstudio.com/updates',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Microsoft Visual Studio Code'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'<strong>Update ([\d.]+)</strong>'
+        }
+    },
     'WinRAR': {
         'DownloadURL': 'https://www.win-rar.com/download.html?&L=0',
         'CheckUpdateURL': 'https://www.win-rar.com/download.html?&L=0',
