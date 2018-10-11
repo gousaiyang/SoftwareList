@@ -379,7 +379,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<strong>Update ([\d.]+)</strong>'
+            'Selector': r'vscode-update\.azurewebsites\.net/([\d.]+)/win32-x64-user/stable'
         }
     },
     'WinRAR': {
