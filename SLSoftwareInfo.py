@@ -349,9 +349,8 @@ software_info = {
             'Selector': r'TeamViewer'
         },
         'NewestVersionDetection': {
-            'Type': 'BeautifulSoupWithRegex',
-            'bs': 'p[class="DownloadVersion"]',
-            're': r'v?([\d.]+)'
+            'Type': 'Regex',
+            'Selector': r'<p>v([\d.]+)</p>'
         }
     },
     'TIM': {
