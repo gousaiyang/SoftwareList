@@ -343,14 +343,14 @@ software_info = {
     },
     'TeamViewer': {
         'DownloadURL': 'https://www.teamviewer.com/zhcn/download/windows/',
-        'CheckUpdateURL': 'https://www.teamviewer.com/zhcn/download/windows/',
+        'CheckUpdateURL': 'https://chocolatey.org/packages/teamviewer',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'TeamViewer'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<p>v([\d.]+)</p>'
+            'Selector': r'Downloads of v ([\d.]+)'
         }
     },
     'TIM': {
