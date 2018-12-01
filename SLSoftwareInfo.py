@@ -378,7 +378,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'vscode-update\.azurewebsites\.net/([\d.]+)/win32-x64-user/stable'
+            'Selector': r'update\.code\.visualstudio\.com/([\d.]+)/win32-x64-user/stable'
         }
     },
     'WinRAR': {
