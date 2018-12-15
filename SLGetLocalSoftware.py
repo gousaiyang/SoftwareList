@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import re
-import locale
 import itertools
-from subprocess import Popen, PIPE, STDOUT
+import locale
+import re
+from subprocess import PIPE, STDOUT, Popen
+
 
 def exec_powershell(command):
     p = Popen(('powershell', command), stdout=PIPE, stdin=PIPE, stderr=STDOUT)
     return p.communicate()[0]
+
 
 def parse_ps_output(content):
     for s in content.decode(locale.getpreferredencoding()).strip().split('\r\n\r\n'):
@@ -18,6 +20,7 @@ def parse_ps_output(content):
             r = re.findall(r'DisplayName\s*:\s*(.*)', s)
             if r:
                 yield (r[0].strip(), '')
+
 
 def get_local_software():
     software_list = {}

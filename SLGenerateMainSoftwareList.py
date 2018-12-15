@@ -3,8 +3,9 @@
 import json
 
 from SLHelper import file_content
-from SLHTMLGeneration import url_placeholder, disable_a, render_page, open_html_in_browser
+from SLHTMLGeneration import disable_a, open_html_in_browser, render_page, url_placeholder
 from SLSoftwareInfo import software_info
+
 
 def get_main_software():
     for item in json.loads(file_content('MainSoftwareList.json')):
@@ -15,9 +16,11 @@ def get_main_software():
         result['DownloadAttribute'] = '' if 'DownloadURL' in info else disable_a
         yield result
 
+
 def main():
     new_file = render_page('Main', get_main_software())
     open_html_in_browser(new_file)
+
 
 if __name__ == '__main__':
     main()

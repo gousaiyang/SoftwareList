@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import re
-import json
 import itertools
-import requests
+import json
+import re
+
 import colorlabels as cl
+import requests
 from bs4 import BeautifulSoup
 
-from SLHelper import file_content, date_sanitizer, alert_messagebox
-from SLHTMLGeneration import placeholder, url_placeholder, disable_a, render_page, open_html_in_browser
 from SLGetLocalSoftware import get_local_software
+from SLHelper import alert_messagebox, date_sanitizer, file_content
+from SLHTMLGeneration import disable_a, open_html_in_browser, placeholder, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
 _web_query_error = None
+
 
 def web_query(url, selector):
     global _web_query_error
@@ -41,20 +43,23 @@ def web_query(url, selector):
         else:
             return '[Invalid Selector]'
 
+
 def query_current_version(local_software, selector):
     if selector['Type'] == 'InName':
         result = list(itertools.chain(*(re.findall(selector['Selector'], x) for x in local_software.keys())))
         return result[0] if result else placeholder
     elif selector['Type'] == 'InVersion':
-        result = [x for x in local_software.keys() if re.search(selector['Selector'], x)] # Should not use re.match()!
+        result = [x for x in local_software.keys() if re.search(selector['Selector'], x)]  # Should not use re.match()!
         return local_software[result[0]] if result else placeholder
     else:
         return '[Invalid Selector]'
+
 
 def needs_update(current_version, newest_version):
     cv = current_version.strip()
     nv = newest_version.strip()
     return cv != nv or cv == placeholder
+
 
 def check_update(local_software):
     global _web_query_error
@@ -93,6 +98,7 @@ def check_update(local_software):
             if needs_update(result['CurrentVersion'], result['NewestVersion']):
                 yield result
 
+
 def main():
     cl.section('SoftwareList Update Check')
 
@@ -105,6 +111,7 @@ def main():
         open_html_in_browser(new_file)
     else:
         alert_messagebox('SoftwareList Update Checker', 'All the software in the list is up to date!')
+
 
 if __name__ == '__main__':
     main()
