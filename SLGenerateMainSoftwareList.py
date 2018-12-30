@@ -2,7 +2,7 @@
 
 import json
 
-from SLHelper import file_content
+from SLHelper import file_content, lower_name_sorted
 from SLHTMLGeneration import disable_a, open_html_in_browser, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
@@ -18,7 +18,7 @@ def get_main_software():
 
 
 def main():
-    new_file = render_page('Main', get_main_software())
+    new_file = render_page('Main', lower_name_sorted(get_main_software()))
     open_html_in_browser(new_file)
 
 

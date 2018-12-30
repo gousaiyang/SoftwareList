@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from SLGetAndroidPackages import check_android_device, check_config, get_all_android_apps
+from SLHelper import lower_name_sorted
 from SLHTMLGeneration import open_html_in_browser, placeholder, render_page
 
 
@@ -12,7 +13,7 @@ def get_android_software_items():
 def main():
     check_config()
     check_android_device()
-    new_file = render_page('Android', get_android_software_items())
+    new_file = render_page('Android', lower_name_sorted(get_android_software_items()))
     open_html_in_browser(new_file)
 
 

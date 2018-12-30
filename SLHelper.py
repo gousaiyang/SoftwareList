@@ -30,3 +30,7 @@ def alert_messagebox(title, content):
 
 def keep_window_open():
     input('Press Enter to exit...')
+
+
+def lower_name_sorted(data):
+    return sorted(data, key=lambda x: x['Name'].lower())

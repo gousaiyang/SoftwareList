@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from SLGetLocalSoftware import get_local_software
-from SLHelper import alert_messagebox, date_sanitizer, file_content
+from SLHelper import alert_messagebox, date_sanitizer, file_content, lower_name_sorted
 from SLHTMLGeneration import disable_a, open_html_in_browser, placeholder, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
@@ -105,7 +105,7 @@ def main():
     with cl.progress('Querying local software information...', cl.PROGRESS_SPIN):
         local_software = get_local_software()
 
-    update_list = list(check_update(local_software))
+    update_list = lower_name_sorted(check_update(local_software))
     if update_list:
         new_file = render_page('Update', update_list)
         open_html_in_browser(new_file)
