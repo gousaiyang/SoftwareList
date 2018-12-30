@@ -29,6 +29,22 @@ software_info = {
             'Selector': r'/atom/atom/releases/tag/v([\d.]+)"'
         }
     },
+    'AutoHotkey': {
+        'DownloadURL': 'https://www.autohotkey.com/download/',
+        'CheckUpdateURL': 'https://www.autohotkey.com/download/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'AutoHotkey'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm">v([\d.]+)'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm">v(?:[\d.]+) - (.*?)</a>'
+        }
+    },
     'Beyond Compare': {
         'DownloadURL': 'https://www.scootersoftware.com/download.php',
         'CheckUpdateURL': 'https://www.scootersoftware.com/download.php',
