@@ -2,8 +2,8 @@
 
 software_info = {
     '7-Zip': {
-        'DownloadURL': 'http://www.7-zip.org/',
-        'CheckUpdateURL': 'http://www.7-zip.org/',
+        'DownloadURL': 'https://www.7-zip.org/download.html',
+        'CheckUpdateURL': 'https://www.7-zip.org/download.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'7-Zip'
