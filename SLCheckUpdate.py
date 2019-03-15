@@ -13,6 +13,8 @@ from SLHelper import alert_messagebox, date_sanitizer, file_content, lower_name_
 from SLHTMLGeneration import disable_a, open_html_in_browser, placeholder, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
+
 _web_query_error = None
 
 
@@ -21,7 +23,7 @@ def web_query(url, selector):
 
     try:
         _web_query_error = None
-        r = requests.get(url, timeout=60)
+        r = requests.get(url, timeout=60, headers={'User-Agent': USER_AGENT})
     except Exception as e:
         _web_query_error = e
         return '[Network Failure]'
