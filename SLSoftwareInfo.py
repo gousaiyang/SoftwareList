@@ -29,6 +29,18 @@ software_info = {
             'Selector': r'/atom/atom/releases/tag/v([\d.]+)"'
         }
     },
+    'Audacity': {
+        'DownloadURL': 'https://www.audacityteam.org/download/windows/',
+        'CheckUpdateURL': 'https://www.audacityteam.org/download/windows/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Audacity'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Audacity ([\d.]+) installer'
+        }
+    },
     'AutoHotkey': {
         'DownloadURL': 'https://www.autohotkey.com/download/',
         'CheckUpdateURL': 'https://www.autohotkey.com/download/',
@@ -38,11 +50,11 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm">v([\d.]+)'
+            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm"><!--update-->v([\d.]+)'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm">v(?:[\d.]+) - (.*?)</a>'
+            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm"><!--update-->v(?:[\d.]+) - (.*?)<!--/update--></a>'
         }
     },
     'Beyond Compare': {
@@ -191,6 +203,18 @@ software_info = {
         'ReleaseDateDetection': {
             'Type': 'Regex',
             'Selector': r'<meta name="date" content="([^"]*)"/>'
+        }
+    },
+    'JDK 11': {
+        'DownloadURL': 'https://www.oracle.com/technetwork/java/javase/downloads/index.html',
+        'CheckUpdateURL': 'https://chocolatey.org/packages/jdk11',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Java\(TM\) SE Development Kit 11'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Downloads of v ([\d.]+)'
         }
     },
     'MagicEXIF Metadata Editor': {
