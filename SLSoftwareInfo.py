@@ -73,6 +73,34 @@ software_info = {
             'Selector': r'released(.*)</p>'
         }
     },
+    'Cheat Engine': {
+        'DownloadURL': 'https://www.cheatengine.org/',
+        'CheckUpdateURL': 'https://www.cheatengine.org/',
+        'CurrentVersionDetection': {
+            'Type': 'InName',
+            'Selector': r'Cheat Engine ([\d.]+)'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'<p><b>(?:.*?):</b>Cheat Engine ([\d.]+) Released:</p><p>'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'<p><b>(.*?):</b>Cheat Engine (?:[\d.]+) Released:</p><p>'
+        }
+    },
+    'DB Browser for SQLite': {
+        'DownloadURL': 'https://sqlitebrowser.org/dl/',
+        'CheckUpdateURL': 'https://sqlitebrowser.org/dl/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'DB Browser for SQLite'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Our latest release \(([\d.]+)\) for Windows'
+        }
+    },
     'Dev-C++': {
         'DownloadURL': 'https://sourceforge.net/projects/orwelldevcpp/',
         'CheckUpdateURL': 'https://sourceforge.net/projects/orwelldevcpp/',
@@ -369,6 +397,34 @@ software_info = {
             'Selector': r'Latest Python 3 Release - Python ([\d.]+)'
         }
     },
+    'ScreenToGif': {
+        'DownloadURL': 'https://github.com/NickeManarin/ScreenToGif/releases/latest',
+        'CheckUpdateURL': 'https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'ScreenToGif'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'"tag_name"\s*:\s*"([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
+        }
+    },
+    'SilentEye': {
+        'DownloadURL': 'https://silenteye.v1kings.io/download.html?i2',
+        'CheckUpdateURL': 'https://silenteye.v1kings.io/download.html?i2',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'SilentEye'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Version ([\d.]+)<br/>'
+        }
+    },
     'Sublime Text': {
         'DownloadURL': 'https://www.sublimetext.com/',
         'CheckUpdateURL': 'https://www.sublimetext.com/',
@@ -391,6 +447,22 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'Downloads of v ([\d.]+)'
+        }
+    },
+    'Telegram': {
+        'DownloadURL': 'https://github.com/telegramdesktop/tdesktop/releases/latest',
+        'CheckUpdateURL': 'https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Telegram Desktop version'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'"tag_name"\s*:\s*"v([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'TIM': {
@@ -443,6 +515,18 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'>Stable Release \(([\d.]+)\)'
+        }
+    },
+    'XAMPP': {
+        'DownloadURL': 'https://www.apachefriends.org/index.html',
+        'CheckUpdateURL': 'https://www.apachefriends.org/index.html',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'XAMPP'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'https://www\.apachefriends\.org/xampp-files/(?:[\d.]+)/xampp-windows-x64-([\d.-]+?)-VC15-installer\.exe'
         }
     },
     'Yarn': {
@@ -515,14 +599,14 @@ software_info = {
     },
     '福昕阅读器': {
         'DownloadURL': 'https://www.foxitsoftware.cn/downloads/',
-        'CheckUpdateURL': 'https://www.foxitsoftware.cn/downloads/require/getPackage.php?product=Foxit-Reader&language=Chinese&platform=Windows',
+        'CheckUpdateURL': 'https://www.foxitsoftware.cn/portal/download/getpackage.html?product=Foxit-Reader&language=Chinese&platform=&version=&package_type=&special=0',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'福昕阅读器'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'"version":\["([\d.]+)"\]'
+            'Selector': r'"version":\["([\d.]+)"'
         }
     },
     '福昕PDF编辑器': {
