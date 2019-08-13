@@ -11,7 +11,7 @@ newest_files = set()
 
 def get_all_files():
     for n in os.listdir('output'):
-        r = re.findall(r'SoftwareList_([-_0-9A-Za-z]+)_\d{14}\.html', n)
+        r = re.findall(r'\ASoftwareList_([-_0-9A-Za-z]+)_\d{14}\.html\Z', n)
         if r:
             html_files.add(n)
             html_file_groups[r[0]].append(n)
