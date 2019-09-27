@@ -158,7 +158,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span[^<>]*?itemprop="dateModified"[^<>]*?content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span(?:.*?)itemprop="datePublished"(?:.*?)content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'foobar2000': {
@@ -183,10 +183,6 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'Downloads of v ([\d.]+)'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'<p class="stat-number">(\d{1,2}/\d{1,2}/\d{4})</p>'
         }
     },
     'Google Chrome': {
@@ -235,14 +231,14 @@ software_info = {
     },
     'JDK 11': {
         'DownloadURL': 'https://www.oracle.com/technetwork/java/javase/downloads/index.html',
-        'CheckUpdateURL': 'https://chocolatey.org/packages/jdk11',
+        'CheckUpdateURL': 'https://www.oracle.com/technetwork/java/javase/downloads/index.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Java\(TM\) SE Development Kit 11'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Downloads of v ([\d.]+)'
+            'Selector': r'Java SE (11\.[\d.]+)'
         }
     },
     'MagicEXIF Metadata Editor': {
@@ -270,7 +266,7 @@ software_info = {
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<span[^<>]*?itemprop="dateModified"[^<>]*?content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span(?:.*?)itemprop="datePublished"(?:.*?)content="(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'MiKTeX': {
@@ -467,18 +463,18 @@ software_info = {
     },
     'TIM': {
         'DownloadURL': 'https://office.qq.com/download.html',
-        'CheckUpdateURL': 'https://pc.qq.com/detail/18/detail_23258.html',
+        'CheckUpdateURL': 'https://tool.chinaz.com/tools/httptest.aspx?host=https://pc.qq.com/detail/18/detail_23258.html',  # cannot access pc.qq.com from outside of China
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'TIM'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'(\d+\.[\d.]+)</li>'
+            'Selector': r'TIM([\d.]+)\.exe'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})</li>'
+            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Visual Studio Code': {
@@ -543,18 +539,18 @@ software_info = {
     },
     '微信': {
         'DownloadURL': 'https://pc.weixin.qq.com/',
-        'CheckUpdateURL': 'https://pc.qq.com/detail/8/detail_11488.html',
+        'CheckUpdateURL': 'https://tool.chinaz.com/tools/httptest.aspx?host=https://pc.qq.com/detail/8/detail_11488.html',  # cannot access pc.qq.com from outside of China
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'微信'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'(\d+\.[\d.]+)</li>'
+            'Selector': r'WeChatSetup_([\d.]+)\.exe'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})</li>'
+            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     '搜狗拼音输入法': {
