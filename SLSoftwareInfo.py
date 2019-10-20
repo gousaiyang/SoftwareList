@@ -590,7 +590,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'百度网盘PC版 V([\d.]+)'
+            'Selector': r'百度网盘PC版(?:\s*)V([\d.]+)'
         }
     },
     '福昕阅读器': {
