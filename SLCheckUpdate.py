@@ -34,11 +34,13 @@ def web_query(url, selector):
         elif selector['Type'] == 'BeautifulSoup':
             soup = BeautifulSoup(r.text, 'html.parser')
             els = soup.select(selector['Selector'])
-            return els[0].string if els else '[Parse Failure]'
+            if not els:
+                return '[Parse Failure]'
+            return els[0].string or '[Parse Failure]'
         elif selector['Type'] == 'BeautifulSoupWithRegex':
             soup = BeautifulSoup(r.text, 'html.parser')
             els = soup.select(selector['bs'])
-            if not els:
+            if not els or not els[0].string:
                 return '[Parse Failure]'
             result = re.findall(selector['re'], els[0].string)
             return result[0] if result else '[Parse Failure]'
