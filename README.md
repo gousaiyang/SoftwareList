@@ -61,7 +61,7 @@ The HTML-based lists support several themes which you can configure in `Config.j
 ### Environment
 
 - OS: Windows 7 and higher versions
-- Python 3. You should install required modules via `pip install -r requirements.txt`
+- Python 3.4+. You should install required modules via `pip install -r requirements.txt`
 
 For using the Android list feature:
 
