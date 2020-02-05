@@ -338,7 +338,7 @@ software_info = {
         }
     },
     'Postman': {
-        'DownloadURL': 'https://www.getpostman.com/',
+        'DownloadURL': 'https://www.postman.com/downloads/',
         'CheckUpdateURL': 'https://dl.pstmn.io/changelog?channel=stable&platform=win',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
@@ -363,10 +363,6 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'strong[class="tit_version"]'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'BeautifulSoup',
-            'Selector': 'span[class="txt_date"]'
         }
     },
     'Python 2': {
