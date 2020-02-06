@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import itertools
-import locale
 import re
-from subprocess import PIPE, STDOUT, Popen
+import subprocess
 
 
 def exec_powershell(command):
-    p = Popen(('powershell', command), stdout=PIPE, stdin=PIPE, stderr=STDOUT)
-    return p.communicate()[0]
+    return subprocess.check_output(('powershell', command), encoding='oem')  # decode using OEM code page
 
 
 def parse_ps_output(content):
-    for s in content.decode(locale.getpreferredencoding()).strip().split('\r\n\r\n'):
-        r = re.findall(r'DisplayName\s*:\s*(.*)\r\nDisplayVersion\s*:\s*(.*)', s)
+    for s in content.strip().split('\n\n'):
+        r = re.findall(r'DisplayName\s*:\s*(.*)\nDisplayVersion\s*:\s*(.*)', s)
         if r:
             yield (r[0][0].strip(), r[0][1].strip())
         else:
@@ -25,11 +23,11 @@ def parse_ps_output(content):
 def get_local_software():
     software_list = {}
 
-    list1_b = exec_powershell('Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
-    list2_b = exec_powershell('Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
-    list3_b = exec_powershell('Get-ItemProperty HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
+    list1 = exec_powershell('Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
+    list2 = exec_powershell('Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
+    list3 = exec_powershell('Get-ItemProperty HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
 
-    for n, v in itertools.chain(parse_ps_output(list1_b), parse_ps_output(list2_b), parse_ps_output(list3_b)):
+    for n, v in itertools.chain(parse_ps_output(list1), parse_ps_output(list2), parse_ps_output(list3)):
         software_list[n] = v
 
     return software_list
