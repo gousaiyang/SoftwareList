@@ -13,7 +13,7 @@ from SLHelper import alert_messagebox, date_sanitizer, file_content, lower_name_
 from SLHTMLGeneration import disable_a, open_html_in_browser, placeholder, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
 
 _web_query_error = None
 
@@ -74,7 +74,7 @@ def check_update(local_software):
 
         name = item['Name']
 
-        with cl.progress('Checking software: %s' % name, cl.PROGRESS_SPIN, color=cl.COLOR_NONE, mark='*') as p:
+        with cl.progress(f'Checking software: {name}', cl.PROGRESS_SPIN, color=cl.COLOR_NONE, mark='*') as p:
             result = {'Name': name, 'Priority': item.get('Priority', '')}
 
             info = software_info.get(name, {})
@@ -90,13 +90,13 @@ def check_update(local_software):
             result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
             if _web_query_error:
                 p.stop()
-                cl.error('Error: %s' % _web_query_error)
+                cl.error(f'Error: {_web_query_error}')
                 _web_query_error = None
 
             result['ReleaseDate'] = date_sanitizer(web_query(cuu, rdd)) if rdd else placeholder
             if _web_query_error:
                 p.stop()
-                cl.error('Error: %s' % _web_query_error)
+                cl.error(f'Error: {_web_query_error}')
                 _web_query_error = None
 
             if needs_update(result['CurrentVersion'], result['NewestVersion']):
