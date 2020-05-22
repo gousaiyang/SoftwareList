@@ -459,7 +459,7 @@ software_info = {
     },
     'TIM': {
         'DownloadURL': 'https://office.qq.com/download.html',
-        'CheckUpdateURL': 'https://tool.chinaz.com/tools/httptest.aspx?host=https://pc.qq.com/detail/18/detail_23258.html',  # cannot access pc.qq.com from outside of China
+        'CheckUpdateURL': 'https://pc.qq.com/detail/18/detail_23258.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'TIM'
@@ -467,10 +467,6 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'TIM([\d.]+)\.exe'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Visual Studio Code': {
@@ -535,7 +531,7 @@ software_info = {
     },
     '微信': {
         'DownloadURL': 'https://pc.weixin.qq.com/',
-        'CheckUpdateURL': 'https://tool.chinaz.com/tools/httptest.aspx?host=https://pc.qq.com/detail/8/detail_11488.html',  # cannot access pc.qq.com from outside of China
+        'CheckUpdateURL': 'https://pc.qq.com/detail/8/detail_11488.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'微信'
@@ -543,10 +539,6 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'WeChatSetup_([\d.]+)\.exe'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     '搜狗拼音输入法': {
