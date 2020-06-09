@@ -242,15 +242,19 @@ software_info = {
         }
     },
     'MagicEXIF Metadata Editor': {
-        'DownloadURL': 'http://www.magicexif.com/',
-        'CheckUpdateURL': 'http://www.magicexif.com/update/update_info.xml',
+        'DownloadURL': 'http://www.magicexif.com/start',
+        'CheckUpdateURL': 'http://www.magicexif.com/update/update_info.json',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'MagicEXIF (?:Metadata Editor|元数据编辑器)'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<Version>([^<>]*)</Version>'
+            'Selector': r'"version": "([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"releaseDate": "(\d{4}/\d{1,2}/\d{1,2})"'
         }
     },
     'MarkdownPad': {
