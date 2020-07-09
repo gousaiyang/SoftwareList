@@ -154,7 +154,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'spjs_prog_version="([\d.]+)"'
+            'Selector': r'spjs_prog_version="([\d.]+)'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
