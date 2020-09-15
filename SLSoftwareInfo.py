@@ -1,6 +1,18 @@
 # -*- coding: utf-8 -*-
 
 software_info = {
+    '010 Editor': {
+        'DownloadURL': 'https://www.sweetscape.com/download/010editor/',
+        'CheckUpdateURL': 'https://www.sweetscape.com/download/010editor/',
+        'CurrentVersionDetection': {
+            'Type': 'InName',
+            'Selector': r'010 Editor ([\d.]+)'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Version: ([\d.]+), Windows'
+        }
+    },
     '7-Zip': {
         'DownloadURL': 'https://www.7-zip.org/download.html',
         'CheckUpdateURL': 'https://www.7-zip.org/download.html',
@@ -367,6 +379,18 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'BeautifulSoup',
             'Selector': 'strong[class="tit_version"]'
+        }
+    },
+    'Process Hacker': {
+        'DownloadURL': 'https://processhacker.sourceforge.io/downloads.php',
+        'CheckUpdateURL': 'https://processhacker.sourceforge.io/downloads.php',
+        'CurrentVersionDetection': {
+            'Type': 'InName',
+            'Selector': r'Process Hacker ([\d.]+)'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Process Hacker ([\d.]+)'
         }
     },
     'Python 2': {
