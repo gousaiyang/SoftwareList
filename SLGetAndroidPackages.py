@@ -38,7 +38,9 @@ def get_all_android_apps():
 
         if line:
             package_path, package_name = re.findall(r'package:(.*)=(.*)', line)[0]
-            package_info = subprocess.check_output(adb_shell + (aapt_exec, 'd', 'badging', package_path))
+
+            package_info = subprocess.run(adb_shell + (aapt_exec, 'd', 'badging', package_path),
+                                          check=False, stdout=subprocess.PIPE).stdout
 
             try:
                 common_name = re.findall(rb"application-label:'(.*)'\r?\n", package_info)[0].decode()
