@@ -225,6 +225,18 @@ software_info = {
             'Selector': r'<span style="float: left;">[\d.]+ \((.*?)\)</span>'
         }
     },
+    'Internet Download Manager': {
+        'DownloadURL': 'https://www.internetdownloadmanager.com/download.html',
+        'CheckUpdateURL': 'https://community.chocolatey.org/packages/internet-download-manager',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Internet Download Manager'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Downloads of v ([\d.]+)'
+        }
+    },
     'Java 8': {
         'DownloadURL': 'https://www.java.com/zh_CN/download/',
         'CheckUpdateURL': 'https://www.java.com/zh_CN/download/',
