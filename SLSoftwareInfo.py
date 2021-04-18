@@ -371,14 +371,14 @@ software_info = {
     },
     'PotPlayer': {
         'DownloadURL': 'https://potplayer.daum.net/',
-        'CheckUpdateURL': 'https://potplayer.daum.net/',
+        'CheckUpdateURL': 'https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'PotPlayer'
         },
         'NewestVersionDetection': {
-            'Type': 'BeautifulSoup',
-            'Selector': 'strong[class="tit_version"]'
+            'Type': 'Regex',
+            'Selector': r'\[([\d.]+)\]'
         }
     },
     'Process Hacker': {
@@ -518,7 +518,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'WinRAR ([\d.]+)'
+            'Selector': r'WinRAR ([\d.]+) Chinese Simplified 64 bit'
         }
     },
     'Wireshark': {
