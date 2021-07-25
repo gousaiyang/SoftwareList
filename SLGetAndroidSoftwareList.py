@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import traceback
+
 from SLGetAndroidPackages import check_android_device, check_config, get_all_android_apps
-from SLHelper import lower_name_sorted
+from SLHelper import keep_window_open, lower_name_sorted
 from SLHTMLGeneration import open_html_in_browser, placeholder, render_page
 
 
@@ -18,4 +20,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:  # pylint: disable=broad-except
+        traceback.print_exc()
+        keep_window_open()

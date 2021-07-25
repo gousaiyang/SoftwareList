@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import json
+import traceback
 
-from SLHelper import file_content, lower_name_sorted
+from SLHelper import file_content, keep_window_open, lower_name_sorted
 from SLHTMLGeneration import disable_a, open_html_in_browser, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
@@ -23,4 +24,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:  # pylint: disable=broad-except
+        traceback.print_exc()
+        keep_window_open()

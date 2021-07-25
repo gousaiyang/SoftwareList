@@ -19,13 +19,10 @@ def get_theme_config():
 
         if theme not in all_themes and theme != 'random':
             raise ValueError('invalid theme')
-    except Exception:
+    except Exception:  # pylint: disable=broad-except
         theme = default_theme.lower()
 
-    if theme == 'random':
-        return random.choice(all_themes)
-    else:
-        return theme
+    return random.choice(all_themes) if theme == 'random' else theme  # nosec
 
 
 def get_adb_config():
@@ -37,7 +34,7 @@ def get_adb_config():
             raise TypeError("'adb_exec' should be str")
 
         return adb_exec
-    except Exception:
+    except Exception:  # pylint: disable=broad-except
         return None
 
 
@@ -50,5 +47,5 @@ def get_aapt_config():
             raise TypeError("'aapt_exec' should be str")
 
         return aapt_exec
-    except Exception:
+    except Exception:  # pylint: disable=broad-except
         return None

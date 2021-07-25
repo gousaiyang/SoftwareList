@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# pylint: disable=line-too-long
+
 software_info = {
     '010 Editor': {
         'DownloadURL': 'https://www.sweetscape.com/download/010editor/',
@@ -410,7 +412,7 @@ software_info = {
         'CheckUpdateURL': 'https://www.python.org/downloads/source/',
         'CurrentVersionDetection': {
             'Type': 'InName',
-            'Selector': r'^Python (2\.[\d.]+)$'
+            'Selector': r'\APython (2\.[\d.]+)\Z'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',

@@ -45,6 +45,7 @@ The HTML-based lists support several themes which you can configure in `Config.j
 - Run `SLCreateDailyUpdateTask.py` to create a daily task for software updating.
 - Run `SLDeleteDailyUpdateTask.py` to delete the update task.
 - Run `SLClearOldLists.py` to clear old software list of every kind, leaving only the newest ones respectively.
+- Run `SLGetRegistryItems.py` to find software registry items by keywords.
 
 ## Screenshots
 
@@ -78,5 +79,5 @@ For using the Android list feature:
 
 ## Further Notes
 
-- [Chocolatey](https://chocolatey.org/) is a package manager for Windows, which can facilitate automation of software updates. But not all applications are published on Chocolatey currently.
+- [Chocolatey](https://chocolatey.org/) is a package manager for Windows, which can facilitate automation of software updates. But not all applications are published on Chocolatey, and they are not always timely updated.
 - UWP applications are automatically updated by Microsoft Store, but many of the applications we use are still legacy Win32 applications. In the future, more applications may become UWPs, but those who need a flexible command of system resources, including some tools for developers, may remain Win32-based.

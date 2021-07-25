@@ -2,7 +2,10 @@
 
 import os
 import re
+import traceback
 from collections import defaultdict
+
+from SLHelper import keep_window_open
 
 html_files = set()
 html_file_groups = defaultdict(list)
@@ -32,4 +35,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:  # pylint: disable=broad-except
+        traceback.print_exc()
+        keep_window_open()

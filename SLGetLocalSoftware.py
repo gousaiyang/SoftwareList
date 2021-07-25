@@ -1,33 +1,28 @@
 # -*- coding: utf-8 -*-
 
-import itertools
-import re
-import subprocess
+import json
+
+from SLHelper import exec_powershell
+
+registry_locations = [
+    'HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+    'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+    'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+]
 
 
-def exec_powershell(command):
-    return subprocess.check_output(('powershell', command), encoding='oem')  # decode using OEM code page
-
-
-def parse_ps_output(content):
-    for s in content.strip().split('\n\n'):
-        r = re.findall(r'DisplayName\s*:\s*(.*)\nDisplayVersion\s*:\s*(.*)', s)
-        if r:
-            yield (r[0][0].strip(), r[0][1].strip())
+def get_local_software_registry_items():
+    for location in registry_locations:
+        items = json.loads(exec_powershell(f'Get-ItemProperty {location}\\* | ConvertTo-Json'))
+        if isinstance(items, list):
+            yield from items
         else:
-            r = re.findall(r'DisplayName\s*:\s*(.*)', s)
-            if r:
-                yield (r[0].strip(), '')
+            yield items
 
 
 def get_local_software():
-    software_list = {}
-
-    list1 = exec_powershell('Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
-    list2 = exec_powershell('Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
-    list3 = exec_powershell('Get-ItemProperty HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Format-List DisplayName, DisplayVersion | out-string -Width 2000')
-
-    for n, v in itertools.chain(parse_ps_output(list1), parse_ps_output(list2), parse_ps_output(list3)):
-        software_list[n] = v
-
-    return software_list
+    return {
+        item['DisplayName']: item.get('DisplayVersion')
+        for item in get_local_software_registry_items()
+        if item.get('DisplayName')
+    }

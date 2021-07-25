@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import re
+import subprocess  # nosec
 import tkinter
 from tkinter import messagebox
+
+import colorlabels as cl
 
 
 def file_content(filename):
@@ -29,8 +32,17 @@ def alert_messagebox(title, content):
 
 
 def keep_window_open():
-    input('Press Enter to exit...')
+    cl.input('Press Enter to exit...')
 
 
 def lower_name_sorted(data):
     return sorted(data, key=lambda x: x['Name'].lower())
+
+
+def remove_prefix(s, prefix):
+    return s[len(prefix):] if s.startswith(prefix) else s
+
+
+def exec_powershell(command):
+    # decode using OEM code page
+    return subprocess.check_output(('powershell', command), encoding='oem')  # nosec
