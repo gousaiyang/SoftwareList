@@ -488,7 +488,7 @@ software_info = {
         'CheckUpdateURL': 'https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
-            'Selector': r'Telegram Desktop version'
+            'Selector': r'Telegram Desktop'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',

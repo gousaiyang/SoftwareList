@@ -63,7 +63,7 @@ def query_current_version(local_software, selector):
 def needs_update(current_version, newest_version):
     cv = current_version.strip()
     nv = newest_version.strip()
-    return cv != nv or cv == placeholder
+    return cv != nv or cv in {placeholder, '[Network Failure]', '[Parse Failure]', '[Invalid Selector]'}
 
 
 def check_update(local_software):
