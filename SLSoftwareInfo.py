@@ -52,7 +52,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Audacity ([\d.]+) installer'
+            'Selector': r'Audacity ([\d.]+) 64 bit installer'
         }
     },
     'AutoHotkey': {
@@ -580,7 +580,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'WeChatSetup_([\d.]+)\.exe'
+            'Selector': r'WeChatSetup-([\d.]+)\.exe'
         }
     },
     '搜狗拼音输入法': {
