@@ -192,7 +192,7 @@ software_info = {
         'CheckUpdateURL': 'https://chocolatey.org/packages/git',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
-            'Selector': r'Git version'
+            'Selector': r'\AGit\Z'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
