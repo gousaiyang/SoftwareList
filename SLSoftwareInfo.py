@@ -267,6 +267,18 @@ software_info = {
             'Selector': r'Java SE (11\.[\d.]+)'
         }
     },
+    'JDK 17': {
+        'DownloadURL': 'https://www.oracle.com/java/technologies/downloads/',
+        'CheckUpdateURL': 'https://www.oracle.com/java/technologies/downloads/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Java\(TM\) SE Development Kit 17'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Java SE Development Kit (17\.[\d.]+) downloads'
+        }
+    },
     'MagicEXIF Metadata Editor': {
         'DownloadURL': 'http://www.magicexif.com/start',
         'CheckUpdateURL': 'http://www.magicexif.com/update/update_info.json',
@@ -309,10 +321,6 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'miktex-(\d+\.\d+)'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'Date:</td>\s*<td>(.*?)</td>'
         }
     },
     'Nmap': {
@@ -580,7 +588,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'WeChatSetup-([\d.]+)\.exe'
+            'Selector': r'WeChatSetup_([\d.]+)\.exe'
         }
     },
     '搜狗拼音输入法': {
@@ -620,7 +628,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'(?:百度网盘PC版|\\u767e\\u5ea6\\u7f51\\u76d8PC\\u7248)(?:\s*)V([\d.]+)'
+            'Selector': r'(?:百度网盘Windows电脑客户端|\\u767e\\u5ea6\\u7f51\\u76d8Windows\\u7535\\u8111\\u5ba2\\u6237\\u7aef)(?:\s*)V([\d.]+)'
         }
     },
     '福昕阅读器': {
