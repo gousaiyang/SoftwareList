@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long, consider-using-namedtuple-or-dataclass
 
 software_info = {
     '010 Editor': {
@@ -96,11 +96,11 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<p><b>(?:.*?):</b>Cheat Engine ([\d.]+) Released:</p><p>'
+            'Selector': r'<p><b>(?:.*?):</b>Cheat Engine ([\d.]+) Released(?:.*?)</p>'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<p><b>(.*?):</b>Cheat Engine (?:[\d.]+) Released:</p><p>'
+            'Selector': r'<p><b>(.*?):</b>Cheat Engine (?:[\d.]+) Released(?:.*?)</p>'
         }
     },
     'DB Browser for SQLite': {
@@ -456,8 +456,8 @@ software_info = {
         }
     },
     'SilentEye': {
-        'DownloadURL': 'https://silenteye.v1kings.io/download.html?i2',
-        'CheckUpdateURL': 'https://silenteye.v1kings.io/download.html?i2',
+        'DownloadURL': 'https://achorein.github.io/silenteye/download/?i2',
+        'CheckUpdateURL': 'https://achorein.github.io/silenteye/download/?i2',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'SilentEye'
