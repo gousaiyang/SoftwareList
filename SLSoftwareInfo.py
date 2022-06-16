@@ -588,7 +588,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'WeChat([\d.]+)\.exe'
+            'Selector': r'WeChat(?:Setup)?_?([\d.]+)\.exe'
         }
     },
     '搜狗拼音输入法': {
