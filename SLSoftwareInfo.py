@@ -161,18 +161,14 @@ software_info = {
     },
     'Fiddler': {
         'DownloadURL': 'https://www.telerik.com/download/fiddler',
-        'CheckUpdateURL': 'http://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/Microsoft-Fiddler.shtml',
+        'CheckUpdateURL': 'https://www.download3k.com/Install-Fiddler-Web-Debugger.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Telerik Fiddler'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'spjs_prog_version="([\d.]+)'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'<span(?:.*?)itemprop="datePublished"(?:.*?)content="(\d{4}-\d{1,2}-\d{1,2})'
+            'Selector': r'<span itemprop="softwareVersion">([\d.]+)'
         }
     },
     'foobar2000': {
