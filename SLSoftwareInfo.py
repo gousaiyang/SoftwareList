@@ -144,8 +144,8 @@ software_info = {
         }
     },
     'FastStone Capture': {
-        'DownloadURL': 'http://www.faststone.org/FSCapturerDownload.htm',
-        'CheckUpdateURL': 'http://www.faststone.org/FSCapturerDownload.htm',
+        'DownloadURL': 'https://www.faststone.org/FSCapturerDownload.htm',
+        'CheckUpdateURL': 'https://www.faststone.org/FSCapturerDownload.htm',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'FastStone Capture'
@@ -276,8 +276,8 @@ software_info = {
         }
     },
     'MagicEXIF Metadata Editor': {
-        'DownloadURL': 'http://www.magicexif.com/start',
-        'CheckUpdateURL': 'http://www.magicexif.com/update/update_info.json',
+        'DownloadURL': 'https://www.magicexif.com/start',
+        'CheckUpdateURL': 'https://www.magicexif.com/update/update_info.json',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'MagicEXIF (?:Metadata Editor|元数据编辑器)'
@@ -292,8 +292,8 @@ software_info = {
         }
     },
     'MarkdownPad': {
-        'DownloadURL': 'http://markdownpad.com/',
-        'CheckUpdateURL': 'http://www.softpedia.com/get/Programming/File-Editors/MarkdownPad.shtml',
+        'DownloadURL': 'https://markdownpad.com/',
+        'CheckUpdateURL': 'https://www.softpedia.com/get/Programming/File-Editors/MarkdownPad.shtml',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'MarkdownPad'
@@ -588,8 +588,8 @@ software_info = {
         }
     },
     '搜狗拼音输入法': {
-        'DownloadURL': 'http://pinyin.sogou.com/',
-        'CheckUpdateURL': 'http://pinyin.sogou.com/',
+        'DownloadURL': 'https://pinyin.sogou.com/',
+        'CheckUpdateURL': 'https://pinyin.sogou.com/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'搜狗(?:拼音)?输入法\b'
@@ -640,7 +640,7 @@ software_info = {
         }
     },
     '福昕PDF编辑器': {
-        'DownloadURL': 'http://edit.foxitreader.cn/',
+        'DownloadURL': 'https://editor.foxitsoftware.cn/',
         'CheckUpdateURL': 'http://m.edit.foxitreader.cn/api/getWebExeDownload',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
