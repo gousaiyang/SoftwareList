@@ -57,18 +57,18 @@ software_info = {
     },
     'AutoHotkey': {
         'DownloadURL': 'https://www.autohotkey.com/download/',
-        'CheckUpdateURL': 'https://www.autohotkey.com/download/',
+        'CheckUpdateURL': 'https://api.github.com/repos/AutoHotkey/AutoHotkey/releases/latest',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'AutoHotkey'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm"><!--update-->v([\d.]+)'
+            'Selector': r'"tag_name"\s*:\s*"v([\d.]+)"'
         },
         'ReleaseDateDetection': {
             'Type': 'Regex',
-            'Selector': r'<a href="\.\./docs/AHKL_ChangeLog\.htm"><!--update-->v(?:[\d.]+) - (.*?)<!--/update--></a>'
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Beyond Compare': {
