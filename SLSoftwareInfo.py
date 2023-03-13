@@ -548,7 +548,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'>Stable Release \(([\d.]+)\)'
+            'Selector': r'>Stable Release: ([\d.]+)'
         }
     },
     'XAMPP': {
