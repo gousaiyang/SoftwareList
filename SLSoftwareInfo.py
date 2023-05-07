@@ -272,7 +272,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Java SE Development Kit (17\.[\d.]+) downloads'
+            'Selector': r'JDK Development Kit (17\.[\d.]+) downloads'
         }
     },
     'MagicEXIF Metadata Editor': {
@@ -624,7 +624,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'(?:百度网盘Windows电脑客户端|\\u767e\\u5ea6\\u7f51\\u76d8Windows\\u7535\\u8111\\u5ba2\\u6237\\u7aef)(?:\s*)V([\d.]+)'
+            'Selector': r'(?:百度网盘Windows电脑客户端|\\u767e\\u5ea6\\u7f51\\u76d8Windows\\u7535\\u8111\\u5ba2\\u6237\\u7aef)(?:\s*)V?([\d.]+)'
         }
     },
     '福昕阅读器': {
