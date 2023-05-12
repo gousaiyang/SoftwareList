@@ -72,19 +72,15 @@ software_info = {
         }
     },
     'Beyond Compare': {
-        'DownloadURL': 'https://www.scootersoftware.com/download.php',
-        'CheckUpdateURL': 'https://www.scootersoftware.com/download.php',
+        'DownloadURL': 'https://www.scootersoftware.com/download',
+        'CheckUpdateURL': 'https://www.scootersoftware.com/download',
         'CurrentVersionDetection': {
             'Type': 'InName',
             'Selector': r'Beyond Compare ([\d.]+)'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Current Version:(?:&nbsp;|\s)*([\d.]+)'
-        },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'released(.*)</p>'
+            'Selector': r'Version ([\d.]+) for Windows'
         }
     },
     'Cheat Engine': {
