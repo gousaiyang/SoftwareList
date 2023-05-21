@@ -80,7 +80,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Version ([\d.]+) for Windows'
+            'Selector': r'Current Version:(?:&nbsp;|\s)*v?([\d.]+)'
         }
     },
     'Cheat Engine': {
