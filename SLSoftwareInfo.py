@@ -329,14 +329,14 @@ software_info = {
     },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/zh-cn/',
-        'CheckUpdateURL': 'https://nodejs.org/zh-cn/',
+        'CheckUpdateURL': 'https://nodejs.org/zh-cn/blog',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'data-version="v([\d.]+)"'
+            'Selector': r'Node v([\d.]+) \(LTS\)'
         }
     },
     'Oracle VM VirtualBox': {
