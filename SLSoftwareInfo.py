@@ -140,8 +140,8 @@ software_info = {
         }
     },
     'FastStone Capture': {
-        'DownloadURL': 'https://www.faststone.org/FSCapturerDownload.htm',
-        'CheckUpdateURL': 'https://www.faststone.org/FSCapturerDownload.htm',
+        'DownloadURL': 'https://www.faststone.org/FSCaptureDownload.htm',
+        'CheckUpdateURL': 'https://www.faststone.org/FSCaptureDownload.htm',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'FastStone Capture'
