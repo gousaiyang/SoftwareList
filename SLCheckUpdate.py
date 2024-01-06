@@ -16,7 +16,7 @@ from SLHTMLGeneration import (disable_a, open_html_in_browser, placeholder, rend
                               url_placeholder)
 from SLSoftwareInfo import software_info
 
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36'  # noqa: E501  # pylint: disable=line-too-long
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'  # noqa: E501  # pylint: disable=line-too-long
 
 _web_query_error = None
 

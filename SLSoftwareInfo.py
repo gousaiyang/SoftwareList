@@ -52,7 +52,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Audacity ([\d.]+) 64 bit installer'
+            'Selector': r'Current version ([\d.]+)'
         }
     },
     'AutoHotkey': {
@@ -328,15 +328,15 @@ software_info = {
         }
     },
     'Node.js': {
-        'DownloadURL': 'https://nodejs.org/zh-cn/',
-        'CheckUpdateURL': 'https://nodejs.org/zh-cn/blog',
+        'DownloadURL': 'https://nodejs.org/en/download',
+        'CheckUpdateURL': 'https://nodejs.org/en/download',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Node v([\d.]+) \(LTS\)'
+            'Selector': r'<strong>([\d.]+)</strong>'
         }
     },
     'Oracle VM VirtualBox': {
@@ -472,7 +472,7 @@ software_info = {
         }
     },
     'TeamViewer': {
-        'DownloadURL': 'https://www.teamviewer.com/zhcn/download/windows/',
+        'DownloadURL': 'https://www.teamviewer.com/download/windows/',
         'CheckUpdateURL': 'https://chocolatey.org/packages/teamviewer',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
@@ -501,7 +501,7 @@ software_info = {
     },
     'TIM': {
         'DownloadURL': 'https://office.qq.com/download.html',
-        'CheckUpdateURL': 'https://pc.qq.com/detail/18/detail_23258.html',
+        'CheckUpdateURL': 'https://im.qq.com/rainbow/TIMDownload/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'TIM'
@@ -580,7 +580,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'WeChat(?:Setup)?_?([\d.]+)\.exe'
+            'Selector': r'(?:最新|\xe6\x9c\x80\xe6\x96\xb0)([\d.]+)(?:官方正式版|\xe5\xae\x98\xe6\x96\xb9\xe6\xad\xa3\xe5\xbc\x8f\xe7\x89\x88)'
         }
     },
     '搜狗拼音输入法': {
