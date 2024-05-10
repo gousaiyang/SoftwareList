@@ -336,7 +336,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'<strong>([\d.]+)</strong>'
+            'Selector': r'Download Node.js v([\d.]+)'
         }
     },
     'Oracle VM VirtualBox': {
