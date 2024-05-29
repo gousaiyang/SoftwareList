@@ -328,8 +328,8 @@ software_info = {
         }
     },
     'Node.js': {
-        'DownloadURL': 'https://nodejs.org/en/download',
-        'CheckUpdateURL': 'https://nodejs.org/en/download',
+        'DownloadURL': 'https://nodejs.org/en/download/prebuilt-installer',
+        'CheckUpdateURL': 'https://nodejs.org/en/download/prebuilt-installer',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
