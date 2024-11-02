@@ -181,14 +181,14 @@ software_info = {
     },
     'Git': {
         'DownloadURL': 'https://git-scm.com/download/win',
-        'CheckUpdateURL': 'https://chocolatey.org/packages/git',
+        'CheckUpdateURL': 'https://gitforwindows.org/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'\AGit\Z'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Downloads of v ([\d.]+)'
+            'Selector': r'Version ([\d.]+)'
         }
     },
     'Google Chrome': {
@@ -344,7 +344,7 @@ software_info = {
         'CheckUpdateURL': 'https://www.virtualbox.org/wiki/Downloads',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
-            'Selector': r'Oracle VM VirtualBox'
+            'Selector': r'Oracle (?:VM )?VirtualBox'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
