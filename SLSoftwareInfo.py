@@ -328,15 +328,15 @@ software_info = {
         }
     },
     'Node.js': {
-        'DownloadURL': 'https://nodejs.org/en/download/prebuilt-installer',
-        'CheckUpdateURL': 'https://nodejs.org/en/download/prebuilt-installer',
+        'DownloadURL': 'https://nodejs.org/en/download',
+        'CheckUpdateURL': 'https://nodejs.org/en/download',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Download Node.js v([\d.]+)'
+            'Selector': r'v([\d.]+) \(LTS\)'
         }
     },
     'Oracle VM VirtualBox': {
