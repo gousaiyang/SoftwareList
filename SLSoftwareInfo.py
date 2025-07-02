@@ -31,6 +31,30 @@ software_info = {
             'Selector': r'Download 7-Zip [\d.]+ \((\d{4}-\d{1,2}-\d{1,2})\) for Windows'
         }
     },
+    'Alternative A2DP Driver': {
+        'DownloadURL': 'https://www.bluetoothgoodies.com/a2dp/download/',
+        'CheckUpdateURL': 'https://www.bluetoothgoodies.com/a2dp/download/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Alternative A2DP Driver'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'AlternativeA2dpSetup-([\d.]+)\.msi'
+        }
+    },
+    'Arduino IDE': {
+        'DownloadURL': 'https://www.arduino.cc/en/software/',
+        'CheckUpdateURL': 'https://www.arduino.cc/en/software/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Arduino IDE'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'arduino-ide_([\d.]+)_Windows_64bit\.exe'
+        }
+    },
     'Atom': {
         'DownloadURL': 'https://atom.io/',
         'CheckUpdateURL': 'https://github.com/atom/atom/releases.atom',
@@ -167,6 +191,18 @@ software_info = {
             'Selector': r'<span itemprop="softwareVersion">([\d.]+)'
         }
     },
+    'Firefox': {
+        'DownloadURL': 'https://www.mozilla.org/en-US/firefox/new/',
+        'CheckUpdateURL': 'https://community.chocolatey.org/packages/Firefox',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Mozilla Firefox'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Downloads of v ([\d.]+)'
+        }
+    },
     'foobar2000': {
         'DownloadURL': 'https://www.foobar2000.org/download',
         'CheckUpdateURL': 'https://www.foobar2000.org/download',
@@ -248,15 +284,15 @@ software_info = {
         }
     },
     'JDK 11': {
-        'DownloadURL': 'https://www.oracle.com/technetwork/java/javase/downloads/index.html',
-        'CheckUpdateURL': 'https://www.oracle.com/technetwork/java/javase/downloads/index.html',
+        'DownloadURL': 'https://www.oracle.com/java/technologies/downloads/',
+        'CheckUpdateURL': 'https://www.oracle.com/java/technologies/downloads/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Java\(TM\) SE Development Kit 11'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Java SE (11\.[\d.]+)'
+            'Selector': r'Java SE Development Kit (11\.[\d.]+)'
         }
     },
     'JDK 17': {
@@ -268,7 +304,19 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'JDK Development Kit (17\.[\d.]+) downloads'
+            'Selector': r'Java SE Development Kit (17\.[\d.]+) downloads'
+        }
+    },
+    'JDK 21': {
+        'DownloadURL': 'https://www.oracle.com/java/technologies/downloads/',
+        'CheckUpdateURL': 'https://www.oracle.com/java/technologies/downloads/',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'Java\(TM\) SE Development Kit 21'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'Java SE Development Kit (21\.[\d.]+) downloads'
         }
     },
     'MagicEXIF Metadata Editor': {
@@ -395,18 +443,6 @@ software_info = {
             'Selector': r'\[([\d.]+)\]'
         }
     },
-    'Process Hacker': {
-        'DownloadURL': 'https://processhacker.sourceforge.io/downloads.php',
-        'CheckUpdateURL': 'https://processhacker.sourceforge.io/downloads.php',
-        'CurrentVersionDetection': {
-            'Type': 'InName',
-            'Selector': r'Process Hacker ([\d.]+)'
-        },
-        'NewestVersionDetection': {
-            'Type': 'Regex',
-            'Selector': r'Process Hacker ([\d.]+)'
-        }
-    },
     'Python 2': {
         'DownloadURL': 'https://www.python.org/downloads/',
         'CheckUpdateURL': 'https://www.python.org/downloads/source/',
@@ -469,6 +505,18 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'Build (\d+)'
+        }
+    },
+    'System Informer': {
+        'DownloadURL': 'https://systeminformer.com/downloads',
+        'CheckUpdateURL': 'https://systeminformer.com/downloads',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'System Informer'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'download/v([\d.]+)/systeminformer-'
         }
     },
     'TeamViewer': {
@@ -544,7 +592,19 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'>Stable Release: ([\d.]+)'
+            'Selector': r'>\s*Stable Release: ([\d.]+)'
+        }
+    },
+    'WizTree': {
+        'DownloadURL': 'https://diskanalyzer.com/download',
+        'CheckUpdateURL': 'https://diskanalyzer.com/download',
+        'CurrentVersionDetection': {
+            'Type': 'InVersion',
+            'Selector': r'WizTree'
+        },
+        'NewestVersionDetection': {
+            'Type': 'Regex',
+            'Selector': r'WizTree ([\d.]+)'
         }
     },
     'XAMPP': {
