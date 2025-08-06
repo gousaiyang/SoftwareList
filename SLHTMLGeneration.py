@@ -12,12 +12,12 @@ from SLConfigReader import get_theme_config
 from SLHelper import file_content, write_file
 
 CDN_URLs = {
-    'Bootstrap_CSS_CDN': 'https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css',
-    'DataTables_Bootstrap_CSS_CDN': 'https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css',
-    'FontAwesome_CSS_CDN': 'https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
-    'jQuery_JS_CDN': 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js',
-    'DataTables_JS_CDN': 'https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js',
-    'DataTables_Bootstrap_JS_CDN': 'https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js',
+    'Bootstrap_CSS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css',
+    'DataTables_Bootstrap_CSS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css',
+    'FontAwesome_CSS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+    'jQuery_JS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+    'DataTables_JS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js',
+    'DataTables_Bootstrap_JS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js',
 }
 
 placeholder = '--'
