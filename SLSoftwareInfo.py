@@ -45,14 +45,18 @@ software_info = {
     },
     'Arduino IDE': {
         'DownloadURL': 'https://www.arduino.cc/en/software/',
-        'CheckUpdateURL': 'https://www.arduino.cc/en/software/',
+        'CheckUpdateURL': 'https://api.github.com/repos/arduino/arduino-ide/releases/latest',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Arduino IDE'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'arduino-ide_([\d.]+)_Windows_64bit\.exe'
+            'Selector': r'"tag_name"\s*:\s*"([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Atom': {
