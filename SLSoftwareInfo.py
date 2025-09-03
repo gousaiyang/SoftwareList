@@ -216,7 +216,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'foobar2000 v([\d.]+)'
+            'Selector': r'<div\s+class="fooversion"\s*>\s*([\d.]+)'
         }
     },
     'Git': {
