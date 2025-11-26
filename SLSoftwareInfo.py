@@ -442,6 +442,7 @@ software_info = {
             'Type': 'InVersion',
             'Selector': r'PotPlayer'
         },
+        'CurrentVersionPostProcessing': lambda version: version.removesuffix('.0').replace('.', ''),
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'\[([\d.]+)\]'

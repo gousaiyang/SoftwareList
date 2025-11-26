@@ -81,14 +81,20 @@ def check_update(local_software):
             info = software_info.get(name, {})
             cuu = info.get('CheckUpdateURL')
             cvd = info.get('CurrentVersionDetection')
+            cvpp = info.get('CurrentVersionPostProcessing')
             nvd = info.get('NewestVersionDetection')
+            nvpp = info.get('NewestVersionPostProcessing')
             rdd = info.get('ReleaseDateDetection')
 
             result['DownloadURL'] = info.get('DownloadURL', url_placeholder)
             result['DownloadAttribute'] = '' if 'DownloadURL' in info else disable_a
             result['CurrentVersion'] = query_current_version(local_software, cvd) if cvd else placeholder
+            if cvpp:
+                result['CurrentVersion'] = cvpp(result['CurrentVersion'])
 
             result['NewestVersion'] = web_query(cuu, nvd) if nvd else placeholder
+            if nvpp:
+                result['NewestVersion'] = nvpp(result['NewestVersion'])
             if _web_query_error:
                 p.stop()
                 cl.error(f'Error: {_web_query_error}')
