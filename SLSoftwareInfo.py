@@ -436,7 +436,7 @@ software_info = {
         }
     },
     'PotPlayer': {
-        'DownloadURL': 'https://potplayer.daum.net/',
+        'DownloadURL': 'https://potplayer.tv/',
         'CheckUpdateURL': 'https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
