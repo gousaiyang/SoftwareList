@@ -381,14 +381,18 @@ software_info = {
     },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/en/download',
-        'CheckUpdateURL': 'https://nodejs.org/en/download',
+        'CheckUpdateURL': 'https://api.github.com/repos/nodejs/node/releases/latest',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'v([\d.]+) \(LTS\)'
+            'Selector': r'"tag_name"\s*:\s*"v([\d.]+)"'
+        },
+        'ReleaseDateDetection': {
+            'Type': 'Regex',
+            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
         }
     },
     'Oracle VM VirtualBox': {
