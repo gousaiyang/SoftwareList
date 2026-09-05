@@ -80,7 +80,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Current version ([\d.]+)'
+            'Selector': r'/download/Audacity-([\d.]+)'
         }
     },
     'AutoHotkey': {
