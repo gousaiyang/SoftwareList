@@ -5,16 +5,25 @@ import os
 import random
 import re
 
-from SLHelper import file_content
+from SLHelper import file_content, sl_path
 
 default_theme = 'Random'
-all_themes = [f[:-5] for f in os.listdir('themes')
-              if os.path.isfile(os.path.join('themes', f)) and re.fullmatch(r'[-_0-9A-Za-z]+\.json', f)]
+
+
+def get_all_themes():
+    themes_dir = sl_path('themes')
+    return sorted(
+        f[:-5] for f in os.listdir(themes_dir)
+        if os.path.isfile(os.path.join(themes_dir, f)) and re.fullmatch(r'[-_0-9A-Za-z]+\.json', f)
+    )
 
 
 def get_theme_config():
+    all_themes = get_all_themes()
+    theme = default_theme.lower()
+
     try:
-        data = json.loads(file_content('Config.json'))
+        data = json.loads(file_content(sl_path('Config.json')))
         theme = data['theme'].lower()
 
         if theme not in all_themes and theme != 'random':
@@ -22,12 +31,16 @@ def get_theme_config():
     except Exception:  # pylint: disable=broad-except
         theme = default_theme.lower()
 
-    return random.choice(all_themes) if theme == 'random' else theme  # nosec
+    if theme == 'random':
+        if not all_themes:
+            raise FileNotFoundError(f'No theme definitions found in {sl_path("themes")}')
+        return random.choice(all_themes)  # nosec
+    return theme
 
 
 def get_adb_config():
     try:
-        data = json.loads(file_content('Config.json'))
+        data = json.loads(file_content(sl_path('Config.json')))
         adb_exec = data['adb_exec']
 
         if not isinstance(adb_exec, str):
@@ -40,7 +53,7 @@ def get_adb_config():
 
 def get_aapt_config():
     try:
-        data = json.loads(file_content('Config.json'))
+        data = json.loads(file_content(sl_path('Config.json')))
         aapt_exec = data['aapt_exec']
 
         if not isinstance(aapt_exec, str):

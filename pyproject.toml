@@ -1,0 +1,70 @@
+[build-system]
+requires = ['setuptools>=61.0']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'softwarelist'
+version = '2.0.0'
+description = 'A software listing and updating assistant for Windows (and also listing for Android).'
+readme = 'README.md'
+requires-python = '>=3.9'
+license = { file = 'LICENSE' }
+keywords = ['software-list', 'windows', 'registry', 'update-checker', 'android']
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Environment :: Win32 (MS Windows)',
+    'Intended Audience :: End Users/Desktop',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: Microsoft :: Windows',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Topic :: System :: Systems Administration',
+    'Topic :: Utilities',
+]
+dependencies = [
+    'requests',
+    'beautifulsoup4',
+    'colorlabels',
+]
+
+[project.optional-dependencies]
+dev = [
+    'pytest>=7',
+    'ruff>=0.1',
+]
+
+[project.urls]
+Homepage = 'https://github.com/gousaiyang/SoftwareList'
+
+[tool.setuptools]
+py-modules = [
+    'SLCheckUpdate',
+    'SLClearOldLists',
+    'SLConfigReader',
+    'SLCreateDailyUpdateTask',
+    'SLDeleteDailyUpdateTask',
+    'SLGenerateMainSoftwareList',
+    'SLGetAndroidPackages',
+    'SLGetAndroidSoftwareList',
+    'SLGetFullSoftwareList',
+    'SLGetLocalSoftware',
+    'SLGetRegistryItems',
+    'SLHTMLGeneration',
+    'SLHelper',
+    'SLSoftwareInfo',
+]
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
+pythonpath = ['.']
+
+[tool.ruff]
+line-length = 120
+target-version = 'py39'
+
+[tool.ruff.lint]
+select = ['F', 'E9']

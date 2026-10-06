@@ -3,13 +3,16 @@
 import json
 import traceback
 
-from SLHelper import file_content, keep_window_open, lower_name_sorted
+from SLHelper import file_content, keep_window_open, lower_name_sorted, sl_path
 from SLHTMLGeneration import disable_a, open_html_in_browser, render_page, url_placeholder
 from SLSoftwareInfo import software_info
 
 
-def get_main_software():
-    for item in json.loads(file_content('MainSoftwareList.json')):
+def get_main_software(items=None):
+    if items is None:
+        items = json.loads(file_content(sl_path('MainSoftwareList.json')))
+
+    for item in items:
         name = item['Name']
         result = {'Name': name, 'Priority': item.get('Priority', '')}
         info = software_info.get(name, {})

@@ -9,7 +9,7 @@ import webbrowser
 from urllib.request import pathname2url
 
 from SLConfigReader import get_theme_config
-from SLHelper import file_content, write_file
+from SLHelper import file_content, sl_path, write_file
 
 CDN_URLs = {
     'Bootstrap_CSS_CDN': 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css',
@@ -39,19 +39,19 @@ def render_page(pagename, data_items):
     if not re.fullmatch(r'[-_0-9A-Za-z]+', pagename):
         raise ValueError('Invalid pagename')
 
-    heading_template_filename = os.path.join('template', f'heading_{pagename.lower()}.html')
-    item_template_filename = os.path.join('template', f'item_{pagename.lower()}.html')
+    heading_template_filename = sl_path('template', f'heading_{pagename.lower()}.html')
+    item_template_filename = sl_path('template', f'item_{pagename.lower()}.html')
 
     if not os.path.isfile(heading_template_filename) or not os.path.isfile(item_template_filename):
         raise NameError(f'No template found with name {pagename}')
 
-    layout_template = file_content(os.path.join('template', 'layout.html'))
+    layout_template = file_content(sl_path('template', 'layout.html'))
     heading_template = file_content(heading_template_filename)
     item_template = file_content(item_template_filename)
 
     items_html = ''.join(render_template(item_template, s) for s in data_items)
 
-    theme_parameters = json.loads(file_content(os.path.join('themes', f'{get_theme_config()}.json')))
+    theme_parameters = json.loads(file_content(sl_path('themes', f'{get_theme_config()}.json')))
 
     output_html = render_template(layout_template, CDN_URLs, False)
     output_html = render_template(output_html, theme_parameters, False)
@@ -62,7 +62,7 @@ def render_page(pagename, data_items):
         'TimeOfGeneration': time.strftime('%Y-%m-%d %H:%M:%S')
     }, False)
 
-    new_filename = os.path.join('output', time.strftime('SoftwareList_' + pagename + '_%Y%m%d%H%M%S.html'))
+    new_filename = sl_path('output', time.strftime('SoftwareList_' + pagename + '_%Y%m%d%H%M%S.html'))
     write_file(new_filename, output_html)
     return new_filename
 

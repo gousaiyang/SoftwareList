@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import os
 import re
 import subprocess  # nosec
 import traceback
 
 import colorlabels as cl
 
-from SLHelper import keep_window_open
+from SLHelper import keep_window_open, sl_path
 
 task_name = 'SoftwareList Daily Update'
 
@@ -24,7 +23,9 @@ def input_task_time():
 
 
 def get_updater():
-    return os.path.abspath('CheckUpdate.bat')
+    # Anchor to the script directory: the task will later be launched by
+    # Windows with an unrelated working directory.
+    return sl_path('CheckUpdate.bat')
 
 
 def main():
