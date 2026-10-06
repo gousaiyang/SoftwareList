@@ -1,11 +1,25 @@
 # -*- coding: utf-8 -*-
 
+import os
 import re
 import subprocess  # nosec
-import tkinter
-from tkinter import messagebox
+from pathlib import Path
 
 import colorlabels as cl
+
+__version__ = '2.0.0'
+
+# Data files (Config.json, CheckUpdateList.json, MainSoftwareList.json) and
+# resource directories (template/, themes/, output/) live next to the scripts.
+# Resolve them against the script directory instead of the current working
+# directory so the tools keep working when they are launched from anywhere,
+# for example by the Windows Task Scheduler (which starts in C:\Windows\System32).
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def sl_path(*parts):
+    """Return an absolute path inside the SoftwareList project directory."""
+    return str(BASE_DIR.joinpath(*parts))
 
 
 def file_content(filename):
@@ -15,6 +29,9 @@ def file_content(filename):
 
 
 def write_file(filename, content):
+    directory = os.path.dirname(filename)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
     with open(filename, 'wb') as fout:
         fout.write(content.encode('utf-8'))
 
@@ -25,10 +42,17 @@ def date_sanitizer(datestring):
 
 
 def alert_messagebox(title, content):
+    # Import tkinter lazily so that importing the modules (and the HTML/JSON
+    # code paths) does not require a GUI toolkit to be installed.
+    import tkinter
+    from tkinter import messagebox
+
     root = tkinter.Tk()
     root.withdraw()
-    messagebox.showinfo(title, content)
-    root.destroy()
+    try:
+        messagebox.showinfo(title, content)
+    finally:
+        root.destroy()
 
 
 def keep_window_open():

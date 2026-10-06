@@ -5,33 +5,46 @@ import re
 import traceback
 from collections import defaultdict
 
-from SLHelper import keep_window_open
+from SLHelper import keep_window_open, sl_path
 
-html_files = set()
-html_file_groups = defaultdict(list)
-newest_files = set()
+list_filename_pattern = re.compile(r'\ASoftwareList_([-_0-9A-Za-z]+)_\d{14}\.html\Z')
 
 
-def get_all_files():
-    for n in os.listdir('output'):
-        r = re.findall(r'\ASoftwareList_([-_0-9A-Za-z]+)_\d{14}\.html\Z', n)
-        if r:
-            html_files.add(n)
-            html_file_groups[r[0]].append(n)
+def find_lists(output_dir=None):
+    """Return ``{page name: [filenames]}`` for the generated lists, oldest first."""
+    groups = defaultdict(list)
 
-    for k in html_file_groups:
-        html_file_groups[k].sort()
-        newest_files.add(html_file_groups[k][-1])
+    for name in os.listdir(output_dir or sl_path('output')):
+        match = list_filename_pattern.match(name)
+        if match:
+            groups[match.group(1)].append(name)
+
+    # Filenames embed a YYYYmmddHHMMSS timestamp, so lexicographic order is
+    # chronological order.
+    for files in groups.values():
+        files.sort()
+
+    return groups
 
 
-def delete_old_files():
-    for f in html_files - newest_files:
-        os.remove(os.path.join('output', f))
+def clear_old_lists(output_dir=None):
+    """Delete every generated list except the newest one of each kind.
+
+    Returns the filenames that were deleted.
+    """
+    output_dir = output_dir or sl_path('output')
+    deleted = []
+
+    for files in find_lists(output_dir).values():
+        for name in files[:-1]:
+            os.remove(os.path.join(output_dir, name))
+            deleted.append(name)
+
+    return deleted
 
 
 def main():
-    get_all_files()
-    delete_old_files()
+    clear_old_lists()
 
 
 if __name__ == '__main__':

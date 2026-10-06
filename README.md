@@ -24,6 +24,20 @@ Usage: Run `SLCheckUpdate.py`
 
 This will check updates for software items in the user-configured file `CheckUpdateList.json` and generate a list of software items that needs update. Method of retrieving update information of software (i.e. URL of their official websites and parsing rules) should be configured in `SLSoftwareInfo.py`.
 
+#### Command-line options
+
+`SLCheckUpdate.py` accepts a few options, which make it usable from scripts and schedulers:
+
+| Option | Effect |
+|---|---|
+| `--json` | Print the pending updates as a JSON document to stdout and do not open a browser. Diagnostics go to stderr, so `SLCheckUpdate.py --json > updates.json` is safe to pipe. |
+| `--no-open` | Generate the HTML list but do not open it in a browser. |
+| `--validate` | Only check that every name in the list exists in the software info database, then exit (exit code `1` if any name is unknown). The example list deliberately contains a `nonexistent` entry, so run it against your own list. |
+| `--list PATH` | Use an alternate check-update list instead of `CheckUpdateList.json`. |
+| `--version` | Print the version and exit. |
+
+The script directory is used as the base for `Config.json`, `CheckUpdateList.json`, `MainSoftwareList.json`, `template/`, `themes/` and `output/`, so the tools can be launched from any working directory (including from a scheduled task).
+
 ### Android List
 
 Usage: Run `SLGetAndroidSoftwareList.py`
@@ -62,7 +76,7 @@ The HTML-based lists support several themes which you can configure in `Config.j
 ### Environment
 
 - OS: Windows 7 and higher versions
-- Python 3.6+. You should install required modules via `pip install -r requirements.txt`
+- Python 3.9+ (some post-processing rules use `str.removesuffix`). You should install required modules via `pip install -r requirements.txt`
 
 For using the Android list feature:
 
@@ -76,6 +90,17 @@ For using the Android list feature:
 - Font Awesome
 - jQuery
 - DataTables
+
+## Testing
+
+The pure logic (configuration reading, HTML generation, version comparison, web query parsing, list cleanup) is covered by an offline test suite that does not touch the registry, PowerShell, `adb` or the network:
+
+```bash
+pip install -e ".[dev]"
+python -m pytest
+```
+
+The tools read `Config.json`, `CheckUpdateList.json`, `MainSoftwareList.json`, `template/`, `themes/` and `output/` relative to the script directory, so they can be started from any working directory, but they are meant to be run from a checkout of this repository (the templates and themes are not part of the installed package).
 
 ## Further Notes
 

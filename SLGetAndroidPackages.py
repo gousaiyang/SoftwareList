@@ -39,20 +39,31 @@ def get_all_android_apps():
     for line in all_packages_info.splitlines():
         line = line.strip()
 
-        if line:
-            package_path, package_name = re.findall(r'package:(.*)=(.*)', line)[0]
+        if not line:
+            continue
 
-            package_info = subprocess.run(adb_shell + (aapt_exec, 'd', 'badging', package_path),  # nosec
-                                          check=False, stdout=subprocess.PIPE, encoding='utf-8').stdout
+        # `package list packages -f` lines look like `package:<path>=<name>`.
+        # Android paths may themselves contain '=' (e.g. `/data/app/~~X==/app==/base.apk`),
+        # so split on the LAST '=' by keeping the first group greedy, and skip
+        # anything that does not match instead of crashing the whole listing.
+        match = re.match(r'package:(.*)=(.*)', line)
+        if not match:
+            cl.warning(f'Skipping unrecognized package listing: {line}')
+            continue
 
-            try:
-                common_name = re.findall(r"application-label:'(.*)'\n", package_info)[0]
-            except Exception:  # pylint: disable=broad-except  # nosec
-                continue
+        package_path, package_name = match.group(1), match.group(2)
 
-            try:
-                version = re.findall(r"versionName='([^']+)'", package_info)[0]
-            except Exception:  # pylint: disable=broad-except
-                version = None
+        package_info = subprocess.run(adb_shell + (aapt_exec, 'd', 'badging', package_path),  # nosec
+                                      check=False, stdout=subprocess.PIPE, encoding='utf-8').stdout
 
-            yield (common_name, package_name, version)
+        try:
+            common_name = re.findall(r"application-label:'(.*)'\n", package_info)[0]
+        except Exception:  # pylint: disable=broad-except  # nosec
+            continue
+
+        try:
+            version = re.findall(r"versionName='([^']+)'", package_info)[0]
+        except Exception:  # pylint: disable=broad-except
+            version = None
+
+        yield (common_name, package_name, version)
