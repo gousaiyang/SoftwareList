@@ -78,6 +78,7 @@ software_info = {
             'Type': 'InVersion',
             'Selector': r'Audacity'
         },
+        'CurrentVersionPostProcessing': lambda version: '.'.join(version.split('.')[:3]),
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'/download/Audacity-([\d.]+)'
@@ -103,12 +104,12 @@ software_info = {
         'DownloadURL': 'https://www.scootersoftware.com/download',
         'CheckUpdateURL': 'https://www.scootersoftware.com/download',
         'CurrentVersionDetection': {
-            'Type': 'InName',
-            'Selector': r'Beyond Compare ([\d.]+)'
+            'Type': 'InVersion',
+            'Selector': r'Beyond Compare'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Current Version:(?:&nbsp;|\s)*v?([\d.]+)'
+            'Selector': r'BCompare-([\d.]+)\.exe'
         }
     },
     'Cheat Engine': {
@@ -197,14 +198,14 @@ software_info = {
     },
     'Firefox': {
         'DownloadURL': 'https://www.mozilla.org/en-US/firefox/new/',
-        'CheckUpdateURL': 'https://community.chocolatey.org/packages/Firefox',
+        'CheckUpdateURL': 'https://www.firefox.com/en-US/releases/',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Mozilla Firefox'
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'Downloads of v ([\d.]+)'
+            'Selector': r'data-latest-firefox="([\d.]+)"'
         }
     },
     'foobar2000': {
@@ -381,7 +382,7 @@ software_info = {
     },
     'Node.js': {
         'DownloadURL': 'https://nodejs.org/en/download',
-        'CheckUpdateURL': 'https://api.github.com/repos/nodejs/node/releases/latest',
+        'CheckUpdateURL': 'https://api.github.com/repos/nodejs/node/releases',
         'CurrentVersionDetection': {
             'Type': 'InVersion',
             'Selector': r'Node\.js'
@@ -390,10 +391,10 @@ software_info = {
             'Type': 'Regex',
             'Selector': r'"tag_name"\s*:\s*"v([\d.]+)"'
         },
-        'ReleaseDateDetection': {
-            'Type': 'Regex',
-            'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
-        }
+        # 'ReleaseDateDetection': {
+        #     'Type': 'Regex',
+        #     'Selector': r'"published_at"\s*:\s*"(\d{4}-\d{1,2}-\d{1,2})'
+        # }
     },
     'Oracle VM VirtualBox': {
         'DownloadURL': 'https://www.virtualbox.org/wiki/Downloads',
@@ -525,7 +526,7 @@ software_info = {
         },
         'NewestVersionDetection': {
             'Type': 'Regex',
-            'Selector': r'download/v([\d.]+)/systeminformer-'
+            'Selector': r'files/systeminformer-([\d.]+)'
         }
     },
     'TeamViewer': {
@@ -690,7 +691,8 @@ software_info = {
         'NewestVersionDetection': {
             'Type': 'Regex',
             'Selector': r'(?:百度网盘Windows电脑客户端|\\u767e\\u5ea6\\u7f51\\u76d8Windows\\u7535\\u8111\\u5ba2\\u6237\\u7aef)(?:\s*)V?([\d.]+)'
-        }
+        },
+        'NewestVersionPostProcessing': lambda version: '.'.join(version.split('.')[:3])
     },
     '福昕阅读器': {
         'DownloadURL': 'https://www.foxitsoftware.cn/downloads/',
